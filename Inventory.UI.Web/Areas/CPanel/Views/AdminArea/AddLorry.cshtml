@@ -1,0 +1,23 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddLorry", "AdminArea"))
+{
+    @Html.LabelFor(m => m.Lorry.LorryKind)
+    @Html.TextBoxFor(m => m.Lorry.LorryKind)
+    <br />
+    @Html.LabelFor(m => m.Lorry.Plate)
+    @Html.TextBoxFor(m => m.Lorry.Plate)
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model != null)
+{
+    if (Model.Lorry.EndUserMessage != null)
+    {
+        <div>@Model.Lorry.EndUserMessage</div>
+    }
+}

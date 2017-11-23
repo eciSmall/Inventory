@@ -1,0 +1,20 @@
+﻿@model Inventory.Model.Web.CPanel.AdminModel
+@{
+    Layout = null;
+}
+
+<h2>Login</h2>
+
+
+@if (@Model != null)
+{
+    <div>@Model.EndUserMessage</div><br />
+}
+@using (Html.BeginForm("CheckAuthenticate", "CPAuthentication"))
+{
+        @Html.LabelFor(x => x.Email, new { @class = "" })<br />
+        @Html.TextBoxFor(m => m.Email, new { @class = "" })<br />
+        @Html.LabelFor(x => x.Password, new { @class = "" })<br />
+        @Html.TextBoxFor(m => m.Password, new { @class = "" })<br />
+        <input type="submit" class="button" value="ورود" />
+}

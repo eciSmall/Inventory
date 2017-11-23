@@ -1,0 +1,11 @@
+﻿@model Inventory.UI.Web.Models.PartnerViewModel
+@{
+    Layout = null;
+}
+
+@Html.LabelFor(m => m.PartnerContract.ContractAmount): @Model.PartnerContract.ContractAmount<br />
+@Html.LabelFor(m => m.PartnerContract.ContractDate): @Model.PartnerContract.ContractDate<br />
+@Html.LabelFor(m => m.PartnerContract.StartDate): @Model.PartnerContract.StartDate<br />
+@Html.LabelFor(m => m.PartnerContract.EndDate): @Model.PartnerContract.EndDate<br />
+@Html.LabelFor(m => m.PartnerContract.PaymentStatus): @if (@Model.PartnerContract.PaymentStatus) { <div>تصفیه کامل</div> } else { <div>بدهی</div> }<br />
+@Html.ActionLink("جلسات قرارداد", "ContractMeeting")<br />

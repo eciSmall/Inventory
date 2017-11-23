@@ -1,0 +1,17 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.LorryList)
+{
+    <Div>
+        @Html.LabelFor(m => m.Lorry.LorryKind):
+        @i.LorryKind<br />
+        @Html.LabelFor(m => m.Lorry.Plate):
+        @i.Plate<br />
+        @Html.ActionLink("جابجایی های ماشین", "CargoTransmissionList")<br />
+        @Html.ActionLink("مربوط به نمایندگی", "Invertory")<br />
+        ------------
+    </Div>
+}

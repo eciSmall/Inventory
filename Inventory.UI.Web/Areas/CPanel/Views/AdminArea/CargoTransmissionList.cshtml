@@ -1,0 +1,17 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.CargoTransmissionList)
+{
+    <Div>
+        @Html.LabelFor(m => m.CargoTransmission.Origin):
+        @i.Origin<br />
+        @Html.LabelFor(m => m.CargoTransmission.Destination):
+        @i.Destination<br />
+        @Html.ActionLink("ماشین مربوط", "Lorry")<br />
+
+        ------------
+    </Div>
+}

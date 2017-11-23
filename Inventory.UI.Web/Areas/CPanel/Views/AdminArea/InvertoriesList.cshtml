@@ -1,0 +1,21 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.InventoriesList)
+{
+    <Div>
+        @i.Name :<br />
+        @Html.LabelFor(m => m.InventoryModel.PhoneNumber): @i.PhoneNumber<br />
+        @Html.LabelFor(m => m.InventoryModel.RepairCondition): @if(@i.RepairCondition){ <Div>نیازمند تعمیر</Div>}else{<Div>نیاز به تعمیر ندارد</Div>} <br />
+    @Html.LabelFor(m => m.InventoryModel.Foundation): @i.Foundation<br />
+    @Html.LabelFor(m => m.InventoryModel.State): @i.State<br />
+    @Html.LabelFor(m => m.InventoryModel.City): @i.City<br />
+    @Html.LabelFor(m => m.InventoryModel.Address): @i.Address<br />
+    @Html.ActionLink("مشاهده تاریخچه بررسی های انجام شده جهت تعمیر", "RepairCheckList", new { name = i.Name })<br />
+    @Html.ActionLink("مخارج انبار", "InvertoryExpensesList", new { name = i.Name })<br />
+        
+    ------------
+</Div>
+ }

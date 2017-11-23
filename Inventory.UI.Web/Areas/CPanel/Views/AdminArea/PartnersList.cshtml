@@ -1,0 +1,16 @@
+﻿@model Inventory.UI.Web.Models.PartnerViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.PartnersList)
+{
+    <Div>
+        @Html.LabelFor(m => m.PartnerModel.Name): @i.Name<br />
+        @Html.LabelFor(m => m.PartnerModel.PhoneNumber): @i.PhoneNumber<br />
+        ------------
+    </Div>
+}
+@Html.ActionLink("اضافه کردن همکار جدید جدید", "AddPartner")<br />
+
+

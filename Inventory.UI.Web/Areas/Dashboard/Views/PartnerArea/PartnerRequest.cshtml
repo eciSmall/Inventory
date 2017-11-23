@@ -1,0 +1,22 @@
+﻿@model Inventory.UI.Web.Models.PartnerViewModel
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("PartnerRequest", "PartnerArea"))
+{
+    @Html.LabelFor(m => m.PartnerRequest.RequestKind)
+    @Html.TextBoxFor(m => m.PartnerRequest.RequestKind)
+    <br />
+    @Html.LabelFor(m => m.PartnerRequest.RequestDescription)
+    @Html.TextBoxFor(m => m.PartnerRequest.RequestDescription)
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model != null)
+{
+    if (Model.PartnerRequest.EndUserMessage != null)
+    {
+        <div>@Model.PartnerRequest.EndUserMessage</div>
+    }
+}

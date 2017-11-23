@@ -1,0 +1,18 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.InvertoryExpensesList)
+{
+    <Div>
+        @Model.InventoryModel.Name :<br />
+        @Html.LabelFor(m => m.InvertoryExpenses.InvertoryIncome): @i.InvertoryIncome<br />
+        @Html.LabelFor(m => m.InvertoryExpenses.Outcome): @i.Outcome<br />
+        @Html.LabelFor(m => m.InvertoryExpenses.Tax): @i.Tax<br />
+        @Html.LabelFor(m => m.InvertoryExpenses.Year): @i.Year<br />
+        @Html.ActionLink("اضافه کردن گزارش جدید", "AddInvertoryExpenses", new { name = @Model.InventoryModel.Name })<br />
+        
+        ------------
+    </Div>
+}

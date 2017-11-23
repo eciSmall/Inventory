@@ -1,0 +1,30 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@Model.InventoryModel.Name :<br />
+@using (Html.BeginForm("AddInvertoryExpenses", "AdminArea", new { name = @Model.InventoryModel.Name }))
+{
+    @Html.LabelFor(m => m.InvertoryExpenses.InvertoryIncome)
+    @Html.TextBoxFor(m => m.InvertoryExpenses.InvertoryIncome)
+    <br />
+    @Html.LabelFor(m => m.InvertoryExpenses.Outcome)
+    @Html.TextBoxFor(m => m.InvertoryExpenses.InvertoryIncome)
+    <br />
+    @Html.LabelFor(m => m.InvertoryExpenses.Tax)
+    @Html.TextBoxFor(m => m.InvertoryExpenses.InvertoryIncome)
+    <br />
+    @Html.LabelFor(m => m.InvertoryExpenses.Year)
+    @Html.TextBoxFor(m => m.InvertoryExpenses.InvertoryIncome)
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model.InvertoryExpenses != null)
+{
+    if (Model.InvertoryExpenses.EndUserMessage != null)
+    {
+        <div >@Model.InvertoryExpenses.EndUserMessage</div>
+    }
+}

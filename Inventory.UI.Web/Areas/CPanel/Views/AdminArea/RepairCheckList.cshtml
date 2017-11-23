@@ -1,0 +1,15 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.RepairCheckList)
+{
+    <Div>
+        @Model.InventoryModel.Name :<br />
+        @Html.LabelFor(m => m.RepairCheckModel.SugesstionPrice): @i.SugesstionPrice<br />
+        @Html.LabelFor(m => m.RepairCheckModel.VisitDate): @i.VisitDate<br />
+        @Html.ActionLink("مشاهده واحد تعمیرکار", "RepairUnit")<br />
+        ------------
+    </Div>
+}

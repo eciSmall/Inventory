@@ -1,0 +1,25 @@
+﻿@model Inventory.UI.Web.Models.PartnerViewModel
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("AddPartner", "AdminArea"))
+{
+    @Html.LabelFor(m => m.PartnerModel.Name)
+    @Html.TextBoxFor(m => m.PartnerModel.Name)
+    <br />
+    @Html.LabelFor(m => m.PartnerModel.Address)
+    @Html.TextBoxFor(m => m.PartnerModel.Address)
+    <br />
+    @Html.LabelFor(m => m.PartnerModel.PhoneNumber)
+    @Html.TextBoxFor(m => m.PartnerModel.PhoneNumber)
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model != null)
+{
+    if (Model.PartnerModel.EndUserMessage != null)
+    {
+        <div>@Model.PartnerModel.EndUserMessage</div>
+    }
+}

@@ -1,0 +1,15 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.RepairUnitList)
+{
+    <Div>
+        @Html.LabelFor(m => m.RepairUnit.Name): @i.Name<br />
+        @Html.LabelFor(m => m.RepairUnit.PhoneNumber): @i.PhoneNumber<br />
+        ------------
+    </Div>
+}
+@Html.ActionLink("اضافه کردن واحد تعمیرکار جدید", "AddNewRepair")<br />
+
