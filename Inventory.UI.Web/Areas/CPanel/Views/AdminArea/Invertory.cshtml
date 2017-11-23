@@ -12,6 +12,13 @@
     @Html.LabelFor(m => m.InventoryModel.State): @Model.InventoryModel.State<br />
     @Html.LabelFor(m => m.InventoryModel.City): @Model.InventoryModel.City<br />
     @Html.LabelFor(m => m.InventoryModel.Address): @Model.InventoryModel.Address<br />
+    @if (Model.InventoryModel.Representation)
+    {
+        <Div>
+            @Html.LabelFor(m => m.InventoryModel.Representation):
+            @Html.ActionLink("ماشین های نمایندگی", "LorryList")<br />
+        </Div>
+    }
     @Html.ActionLink("مشاهده تاریخچه بررسی های انجام شده جهت تعمیر", "RepairCheckList")<br />
     @Html.ActionLink("مخارج انبار", "InvertoryExpensesList")<br />
 

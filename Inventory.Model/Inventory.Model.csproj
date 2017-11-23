@@ -56,6 +56,7 @@
     <Compile Include="Enum.cs" />
     <Compile Include="RepairCheck.cs" />
     <Compile Include="RepairUnit.cs" />
+    <Compile Include="StorageShed.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

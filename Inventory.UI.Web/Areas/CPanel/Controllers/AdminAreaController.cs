@@ -17,7 +17,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         public ActionResult Invertory()
         {
             InvertoryViewModel = new InvertoryViewModel();
-            InventoryModel = new Model.Inventory()
+            InvertoryViewModel.InventoryModel = new Model.Inventory()
             {
                 Address = "tehran",
                 City = "tehran",
@@ -25,13 +25,13 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 Name = "gol",
                 RepairCondition = true,
                 PhoneNumber = "0212222",
-                State = "tehran"
+                State = "tehran",
+                Representation = false
             };
             return View(InvertoryViewModel);
         }
         public ActionResult InvertoriesList(List<Model.Inventory> invertoriesLsit)
         {
-            InventoryModel = new Model.Inventory();
             InvertoryViewModel = new InvertoryViewModel();
             InventoryModel = new Model.Inventory()
             {
@@ -41,7 +41,8 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 Name = "gol",
                 RepairCondition = true,
                 PhoneNumber = "0212222",
-                State = "tehran"
+                State = "tehran",
+                Representation = false
             };
             InvertoryViewModel.InventoriesList.Add(InventoryModel);
             InventoryModel = new Model.Inventory()
@@ -52,7 +53,8 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 Name = "Jangal",
                 RepairCondition = false,
                 PhoneNumber = "5478549568",
-                State = "rasht"
+                State = "rasht",
+                Representation = true
             };
             InvertoryViewModel.InventoriesList.Add(InventoryModel);
             return View(InvertoryViewModel);
