@@ -201,6 +201,11 @@
     <Content Include="Areas\CPanel\Views\AdminArea\CargoTransmissionList.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\Invertory.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\Lorry.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\AddProduct.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\ProductsList.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProduct.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProductsDetails.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\OwnProductList.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -1,0 +1,19 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.OwnProductsDetailsList)
+{
+    <Div>
+        @Html.LabelFor(m => m.OwnProduct.Name):
+        @Model.OwnProduct.Name<br />
+        @Html.LabelFor(m => m.OwnProductsDetails.ProductNumber):
+        @i.ProductNumber<br />
+        @Html.LabelFor(m => m.OwnProductsDetails.Source):
+        @i.Source<br />
+        @Html.LabelFor(m => m.OwnProductsDetails.Destination):
+        @i.Destination<br />
+        ------------
+    </Div>
+}

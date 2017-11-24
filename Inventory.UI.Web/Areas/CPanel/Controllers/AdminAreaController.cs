@@ -17,7 +17,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         public ActionResult Invertory()
         {
             InvertoryViewModel = new InvertoryViewModel();
-            InventoryModel = new Model.Inventory()
+            InvertoryViewModel.InventoryModel = new Model.Inventory()
             {
                 Address = "tehran",
                 City = "tehran",
@@ -25,13 +25,13 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 Name = "gol",
                 RepairCondition = true,
                 PhoneNumber = "0212222",
-                State = "tehran"
+                State = "tehran",
+                Representation = false
             };
             return View(InvertoryViewModel);
         }
         public ActionResult InvertoriesList(List<Model.Inventory> invertoriesLsit)
         {
-            InventoryModel = new Model.Inventory();
             InvertoryViewModel = new InvertoryViewModel();
             InventoryModel = new Model.Inventory()
             {
@@ -41,7 +41,8 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 Name = "gol",
                 RepairCondition = true,
                 PhoneNumber = "0212222",
-                State = "tehran"
+                State = "tehran",
+                Representation = false
             };
             InvertoryViewModel.InventoriesList.Add(InventoryModel);
             InventoryModel = new Model.Inventory()
@@ -52,7 +53,8 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 Name = "Jangal",
                 RepairCondition = false,
                 PhoneNumber = "5478549568",
-                State = "rasht"
+                State = "rasht",
+                Representation = true
             };
             InvertoryViewModel.InventoriesList.Add(InventoryModel);
             return View(InvertoryViewModel);
@@ -210,5 +212,103 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             });
             return View(InvertoryViewModel);
         }
+
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddProduct(ProductModel productModel)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.ProductModel = new ProductModel()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult ProductsList()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.ProductsList = new List<ProductModel>();
+            InvertoryViewModel.ProductsList.Add(new ProductModel()
+            {
+                Name = "خربزه",
+                Opening = DateTime.Now,
+                Expiration = DateTime.Now,
+                Price = "1111",
+                Source = "Tehran",
+                Destination = "Keshmir",
+                ProductNumber = 100
+            });
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult AddOwnProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddOwnProduct(OwnProduct ownProduct)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProduct = new OwnProduct()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult OwnProductList()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProductsDetailsList = new List<OwnProductsDetails>();
+            InvertoryViewModel.OwnProductsDetailsList.Add(new OwnProductsDetails()
+            {
+                ProductNumber = 100,
+                Source = "rash",
+                Destination = "bandar zanzalil"
+            });
+            InvertoryViewModel.OwnProduct = new OwnProduct()
+            {
+                Name = "کلم"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult AddOwnProductsDetails()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProductsList = new List<OwnProduct>();
+            InvertoryViewModel.OwnProductsList.Add(new OwnProduct()
+            {
+                Name = "خودکار",
+            });
+            InvertoryViewModel.OwnProductsList.Add(new OwnProduct()
+            {
+                Name = "فوتبال دستی",
+            });
+            InvertoryViewModel.OwnProduct = new OwnProduct()
+            {
+                Kind = "Name",
+            };
+            return View(InvertoryViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddOwnProductsDetails(OwnProductsDetails ownProductsDetails)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProductsDetails = new OwnProductsDetails()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+
     }
 }

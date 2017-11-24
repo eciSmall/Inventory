@@ -1,0 +1,31 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddOwnProductsDetails", "AdminArea"))
+{
+    @Html.LabelFor(m => m.OwnProductsDetails.ProductNumber)
+    @Html.TextBoxFor(m => m.OwnProductsDetails.ProductNumber)
+    <br />
+    @Html.LabelFor(m => m.OwnProductsDetails.Source)
+    @Html.TextBoxFor(m => m.OwnProductsDetails.Source)
+    <br />
+    @Html.LabelFor(m => m.OwnProductsDetails.Destination)
+    @Html.TextBoxFor(m => m.OwnProductsDetails.Destination)
+    <br />
+    @Html.DropDownListFor(m => m.OwnProduct.Kind, new SelectList(Model.OwnProductsList, Model.OwnProduct.Kind, "Name"))
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model != null)
+{
+    if (Model.OwnProductsDetails != null)
+    {
+        if (Model.OwnProductsDetails.EndUserMessage != null)
+        {
+        <div>@Model.OwnProductsDetails.EndUserMessage</div>
+        }
+    }
+}

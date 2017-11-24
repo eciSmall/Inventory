@@ -31,5 +31,8 @@ namespace Inventory.Model
 
         [Display(Name = "زیر بنا")]
         public int Foundation { get; set; }
+
+        [Display(Name = "نمایندگی")]
+        public bool Representation { get; set; }
     }
 }
