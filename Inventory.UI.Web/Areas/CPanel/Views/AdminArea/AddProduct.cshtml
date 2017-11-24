@@ -1,0 +1,38 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddProduct", "AdminArea", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.ProductModel.Name)
+    @Html.TextBoxFor(m => m.ProductModel.Name)
+    <br />
+    @Html.LabelFor(m => m.ProductModel.Source)
+    @Html.TextBoxFor(m => m.ProductModel.Source)
+    <br />
+    @Html.LabelFor(m => m.ProductModel.Destination)
+    @Html.TextBoxFor(m => m.ProductModel.Destination)
+    <br />
+    @Html.LabelFor(m => m.ProductModel.Expiration)
+    @Html.TextBoxFor(m => m.ProductModel.Expiration)
+    <br />
+    @Html.LabelFor(m => m.ProductModel.Opening)
+    @Html.TextBoxFor(m => m.ProductModel.Opening)
+    <br />
+    @Html.LabelFor(m => m.ProductModel.Price)
+    @Html.TextBoxFor(m => m.ProductModel.Price)
+    <br />
+    @Html.LabelFor(m => m.ProductModel.ProductNumber)
+    @Html.TextBoxFor(m => m.ProductModel.ProductNumber)
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model != null)
+{
+    if (Model.ProductModel.EndUserMessage != null)
+    {
+        <div>@Model.ProductModel.EndUserMessage</div>
+    }
+}

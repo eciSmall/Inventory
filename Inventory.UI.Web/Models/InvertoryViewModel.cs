@@ -20,5 +20,11 @@ namespace Inventory.UI.Web.Models
         public List<Lorry> LorryList;
         public List<CargoTransmission> CargoTransmissionList;
         public CargoTransmission CargoTransmission;
+        public ProductModel ProductModel;
+        public List<ProductModel> ProductsList;
+        public OwnProduct OwnProduct { get; set; }
+        public List<OwnProduct> OwnProductsList { get; set; }
+        public OwnProductsDetails OwnProductsDetails { get; set; }
+        public List<OwnProductsDetails> OwnProductsDetailsList { get; set; }
     }
 }

@@ -212,5 +212,103 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             });
             return View(InvertoryViewModel);
         }
+
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddProduct(ProductModel productModel)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.ProductModel = new ProductModel()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult ProductsList()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.ProductsList = new List<ProductModel>();
+            InvertoryViewModel.ProductsList.Add(new ProductModel()
+            {
+                Name = "خربزه",
+                Opening = DateTime.Now,
+                Expiration = DateTime.Now,
+                Price = "1111",
+                Source = "Tehran",
+                Destination = "Keshmir",
+                ProductNumber = 100
+            });
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult AddOwnProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddOwnProduct(OwnProduct ownProduct)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProduct = new OwnProduct()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult OwnProductList()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProductsDetailsList = new List<OwnProductsDetails>();
+            InvertoryViewModel.OwnProductsDetailsList.Add(new OwnProductsDetails()
+            {
+                ProductNumber = 100,
+                Source = "rash",
+                Destination = "bandar zanzalil"
+            });
+            InvertoryViewModel.OwnProduct = new OwnProduct()
+            {
+                Name = "کلم"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult AddOwnProductsDetails()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProductsList = new List<OwnProduct>();
+            InvertoryViewModel.OwnProductsList.Add(new OwnProduct()
+            {
+                Name = "خودکار",
+            });
+            InvertoryViewModel.OwnProductsList.Add(new OwnProduct()
+            {
+                Name = "فوتبال دستی",
+            });
+            InvertoryViewModel.OwnProduct = new OwnProduct()
+            {
+                Kind = "Name",
+            };
+            return View(InvertoryViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddOwnProductsDetails(OwnProductsDetails ownProductsDetails)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProductsDetails = new OwnProductsDetails()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+
     }
 }

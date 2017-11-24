@@ -1,0 +1,20 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddOwnProduct", "AdminArea"))
+{
+    @Html.LabelFor(m => m.OwnProduct.Kind)
+    @Html.TextBoxFor(m => m.OwnProduct.Kind)
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model != null)
+{
+    if (Model.OwnProduct.EndUserMessage != null)
+    {
+        <div>@Model.OwnProduct.EndUserMessage</div>
+    }
+}

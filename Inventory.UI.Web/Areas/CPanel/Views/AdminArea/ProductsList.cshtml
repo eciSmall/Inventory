@@ -1,0 +1,25 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@foreach (var i in Model.ProductsList)
+{
+    <Div>
+        @Html.LabelFor(m => m.ProductModel.Name):
+        @i.Name<br />
+        @Html.LabelFor(m => m.ProductModel.Source):
+        @i.Source<br />
+        @Html.LabelFor(m => m.ProductModel.Destination):
+        @i.Destination<br />
+        @Html.LabelFor(m => m.ProductModel.Expiration):
+        @i.Expiration<br />
+        @Html.LabelFor(m => m.ProductModel.Opening):
+        @i.Opening<br />
+        @Html.LabelFor(m => m.ProductModel.Price):
+        @i.Price<br />
+        @Html.LabelFor(m => m.ProductModel.ProductNumber):
+        @i.ProductNumber<br />
+        ------------
+    </Div>
+}
