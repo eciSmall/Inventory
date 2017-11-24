@@ -168,10 +168,18 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\bootstrap-theme.min.css" />
+    <Content Include="fonts\bootstrap.min.css" />
+    <Content Include="fonts\common.css" />
+    <Content Include="fonts\font-awesome.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\homepage.css" />
+    <Content Include="fonts\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-theme.min.css" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -209,7 +217,11 @@
     <Content Include="Areas\CPanel\Views\AdminArea\IOProducts.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\Employee.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddEmployee.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\common.css" />
+    <Content Include="Scripts\font-awesome.min.css" />
+    <Content Include="Scripts\homepage.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -220,6 +232,13 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\styles.css" />
+    <Content Include="Styles\bootstrap-theme.min.css" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\common.css" />
+    <Content Include="Styles\font-awesome.min.css" />
+    <Content Include="Styles\homepage.css" />
+    <Content Include="Styles\styles.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

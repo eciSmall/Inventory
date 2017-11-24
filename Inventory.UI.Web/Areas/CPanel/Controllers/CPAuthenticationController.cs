@@ -35,26 +35,27 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             //    Email = adminLogin.Email,
             //    Password = adminLogin.Password
             //});
-            var result = new AdminModel();
-            if (result.Status == Model.ResponseStatus.Success)
-            {
-                SessionState.Store(SessionKeys.AdminSession, adminLogin.Email);
-                return View("Home");
-            }
-            else
-            {
-                AdminModel adminLoginResponse = new AdminModel();
-                adminLoginResponse.Status = result.Status;
-                if (result.EndUserMessage != null)
-                {
-                    adminLoginResponse.EndUserMessage = result.EndUserMessage;
-                }
-                else
-                {
-                    adminLoginResponse.EndUserMessage = "Api Connection Problem!";
-                }
-                return View("Login",  adminLoginResponse);
-            }
+            return RedirectToAction("Home", "AdminArea");
+            //var result = new AdminModel();
+            //if (result.Status == Model.ResponseStatus.Success)
+            //{
+            //    SessionState.Store(SessionKeys.AdminSession, adminLogin.Email);
+            //    return View("Home");
+            //}
+            //else
+            //{
+            //    AdminModel adminLoginResponse = new AdminModel();
+            //    adminLoginResponse.Status = result.Status;
+            //    if (result.EndUserMessage != null)
+            //    {
+            //        adminLoginResponse.EndUserMessage = result.EndUserMessage;
+            //    }
+            //    else
+            //    {
+            //        adminLoginResponse.EndUserMessage = "Api Connection Problem!";
+            //    }
+            //    return View("Login",  adminLoginResponse);
+            //}
         }
     }
 }

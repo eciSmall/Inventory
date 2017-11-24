@@ -1,0 +1,408 @@
+@font-face {
+    font-family: 'YekanWeb';
+    src: url('../font/YekanWeb-Regular.eot');
+    src: url('../font/YekanWeb-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../font/YekanWeb-Regular.woff2') format('woff2'),
+    url('../font/YekanWeb-Regular.woff') format('woff'),
+    url('../font/YekanWeb-Regular.ttf') format('truetype'),
+    url('../font/YekanWeb-Regular.svg#YekanWeb-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*Common styles for all pages */
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    font-family: "YekanWeb", "B Yekan","Tahoma", "Arial";
+    text-align: right;
+    background: #efefef;
+    display: table;
+    margin: 0;
+}
+
+.h1, .h2, .h3, h1, h2, h3{
+    margin-top:0;
+}
+
+a{
+    color: #fff;
+
+}
+a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+
+ol, ul{
+    margin-bottom: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/*End of common styles section*/
+
+/*Menu styles*/
+
+ul{
+    list-style: none;
+    float: right;
+    width: 100%;
+    padding: 0;
+}
+li{
+    text-align: right;
+    width: 100%;
+    padding: 10px;
+}
+
+li > a{
+    -moz-transition: all 0.4s linear ;
+    -ms-transition: all 0.4s linear ;
+    transition: all 0.4s linear ;
+}
+
+ul.menu-content li:hover{
+    background: #061521;
+
+}
+
+ul.menu-content li:hover > a{
+    padding-right: 10px;
+}
+
+.navbar-header{
+    text-align: right;
+    background: #153651;
+
+}
+
+ul li:nth-child(2):hover{
+    padding-right: 10px;
+
+}
+
+ul.menu-content li:first-child{
+    background: #061521;
+    margin: 20px 0 0;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.navbar-header span{
+    font-size: 2em;
+    padding: 0 10px;
+}
+
+.menu{  /*Styles of right side menu*/
+    background: #153651;
+    /*Fixing bootstrap col extra padding*/
+    padding-right:0;
+    padding-left:0;
+    height: 100vh;
+    display: table-row;
+    position: fixed;
+    /*top: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*height: 100%;*/
+
+}
+
+.menu-circle{
+    width: 50px;
+    height: auto;
+    background: #061521;
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    border-radius:100px;
+    text-align: center;
+    font-size: 2.5em;
+    color: #fff;
+    float: right;
+    border: none;
+}
+
+.navbar-header{
+    padding: 10px 10px 0;
+}
+
+#menu-body{
+    padding-right:0;
+    padding-left:0;
+}
+
+.navbar-collapse{   /*Fix bootstrap white  line*/
+    border-top: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.padding-less{
+    padding-right: 0;
+    padding-left:  0
+}
+
+/*End of menu styles section*/
+
+/*Content area styles*/
+#content-section{
+    padding: 29px 0;
+    margin-top: 51px;
+}
+
+
+/*Fast Access box styles*/
+
+.box{
+    background: #153651;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding-right:0;
+    padding-left:0;
+    color: #fff;
+    direction: rtl;
+    width: 100%;
+}
+
+.box header{
+    width: 100%;
+    background: #061521;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.box header > h2{
+    float: right;
+    float: right;
+    padding: 17px 5px 0 0;
+}
+
+.box-circle{
+    background: #153651;
+    margin: 12px;
+}
+
+.box article{
+    padding : 10px;
+}
+
+.box footer{
+    background: #153651;
+}
+
+.box footer > a{
+    background: #061521;
+    float: right;
+    border-radius: 4px 0 4px 0;
+    padding: 5px;
+    -moz-transition: all 0.3s linear ;
+    -ms-transition: all 0.3s linear ;
+    transition: all 0.3s linear ;
+}
+
+.box footer > a:hover{
+    padding-right: 10px;
+
+}
+
+/*End Fast Access box styles*/
+
+/*coordinates form styles*/
+
+.coordinates-form {
+    width: 90%;
+    margin: 0 0 0 10%;
+}
+
+.btn-parkmark{
+    background: #153651;
+    border: 3px solid #061521;
+    color: #fff;
+    padding: 3px 12px;
+    -moz-transition: all 0.4s linear ;
+    -ms-transition: all 0.4s linear ;
+    transition: all 0.4s linear ;
+}
+
+.btn-parkmark:hover{
+    background: #061521;
+    border: 3px solid #061521;
+    color: #fff;
+}
+
+
+/*Input styles*/
+.form-control {
+    border: 2px solid #153651;
+    border-right: 0;
+}
+
+.input-group-addon{
+    width: 20%;
+}
+
+/*End of input styles*/
+
+/*table styles*/
+th{
+    text-align: right;
+}
+
+td{
+    text-align: center;
+}
+
+tr td:nth-child(2){
+    text-align: right;
+}
+
+.btn-table{     /*This class should use with btn-parkmark class*/
+    font-size: 1em;
+    width: 100%;
+    margin: 0;
+}
+
+.table-section{
+    padding: 31px 0;
+}
+
+thead{
+    background: #061521;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th,
+.table > thead > tr > td, .table > thead > tr > th{ /*Fix bootstrap*/
+    padding: 11px 8px;
+    border:0;
+
+}
+
+
+th{
+    color: #fff;
+
+}
+
+/*end of table styles*/
+
+/*Page navigation styles*/
+
+.pages{
+    margin: 10px auto;
+    text-align: center;
+}
+
+.pages a{
+    background: #061521;
+    padding: 3px 12px;
+    border-radius: 3px;
+    transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+}
+
+.pages a.active{
+    background: #153651;
+}
+
+.pages a.no-hover:hover {
+    background: #061521;
+}
+
+.pages a:hover{
+    background: #153651;
+}
+
+
+/*End of Page navigation styles*/
+
+
+@media (max-width: 991px) {
+    .input-group{
+        margin: 10px 0
+    }
+    #content-section{
+        padding: 15px;
+        margin-top: 68px;
+    }
+
+    .box header > h2{
+        font-size: 1.3em;
+        padding: 27px 0 0 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu{
+        height: auto;
+        position: unset;
+        display: block;
+    }
+
+    ul.menu-content{
+        float: unset;
+        width: 100%;
+
+    }
+
+    .coordinates-form{
+        margin: 0 5% 0 5%;
+    }
+
+    .padding-less{
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .navbar-header{
+        padding: 5px 5px 0 0
+    }
+
+    #content-section{
+        text-align: center;
+    }
+
+    .hidden-xm{
+        display: none;
+    }
+
+    .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tbody > tr > th,
+    .table-responsive > .table > tfoot > tr > td, .table-responsive > .table > tfoot > tr > th,
+    .table-responsive > .table > thead > tr > td, .table-responsive > .table > thead > tr > th{
+        /*Bootstrap fix*/
+        white-space: normal;
+    }
+
+}
+
+@media (max-width: 405px) {
+    .menu-circle{
+        float:unset;
+    }
+
+    .navbar-header, li{
+        text-align: center;
+    }
+    .menu-circle{
+        height: 50px;
+    }
+    body{
+        font-size: unset;
+    }
+}

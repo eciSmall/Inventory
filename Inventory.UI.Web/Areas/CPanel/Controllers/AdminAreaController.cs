@@ -1,4 +1,5 @@
 ﻿using Inventory.Model;
+using Inventory.UI.Web.General.Attributes;
 using Inventory.UI.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Web.Mvc;
 
 namespace Inventory.UI.Web.Areas.CPanel.Controllers
 {
+    
+
     public class AdminAreaController : BaseCPanelController
     {
         public ActionResult Home()
@@ -130,7 +133,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             InvertoryViewModel.InvertoryExpenses = new InvertoryExpenses();
             InvertoryViewModel.InventoryModel = new Model.Inventory();
             InvertoryViewModel.InventoryModel.Name = name;
-            InvertoryViewModel.InvertoryExpenses.EndUserMessage = "Added Successful";
+            InvertoryViewModel.InvertoryExpenses.EndUserMessage = "با موفقیت اضافه شد";
             return View(InvertoryViewModel);
         }
 
@@ -342,7 +345,6 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 EndUserMessage = "با موفقیت اضافه شد"
             };
             return View(InvertoryViewModel);
-            return View();
         }
     }
 }
