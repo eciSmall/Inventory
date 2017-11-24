@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/common.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/homepage.css" type="text/css" media="all">
+    <title>پارک مارک</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!--Main section-->
+
+
+        <div class="table-container">
+            <div class="table-cell">
+            <!--This section is only visible in login mode. if user want to register, this block should turn invisible and
+            register block should show. This block is default block that will  show to the user at the beginning -->
+            <section class="col-md-4 col-sm-8 col-md-pull-4 col-sm-pull-2 main-box" id="login">
+            <!--Header of main box-->
+            <header>
+                <!--Parkmark logo beside name of this section-->
+                <h1>ورود</h1>
+            </header>   <!--End of Header of main box-->
+
+            <div class="clearfix"></div>
+
+            <!--Body of main box containing login form and submit button-->
+            <article>
+                <form action="#" method="post" name="login-form" onsubmit="return false;">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="email">ایمیل</span>
+                        <input type="text" name="email" class="form-control" placeholder="ایمیل" aria-describedby="x-addon">
+                    </div>
+                    <span class="text-danger" id="email-error"></span>
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="password">رمز عبور</span>
+                        <input type="password" minlength="8" maxlength="20" name="password" class="form-control" placeholder="رمز عبور" aria-describedby="x-addon">
+                    </div>
+                    <span class="text-danger" id="password-error"></span>
+
+                    <button type="submit" class="btn btn-parkmark" id="login-submit">ورود</button>
+                </form>
+            </article>  <!--End of Body of main box-->
+
+            <!--Footer of main box containing register link -->
+            <footer>
+                <!--<a title="ثبت نام" href="#">عضو نیستید؟ همین الان ثبت نام کنید</a>-->
+            </footer>   <!--End of footer of main box-->
+        </section>
+        <!--End of login section-->
+        </div>  <!--End of table cell-->
+        </div>  <!--End of Table-->
+        <!--End of main section-->
+
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
