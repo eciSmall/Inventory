@@ -1,0 +1,19 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+        @Html.LabelFor(m => m.Employee.Name):
+        @Model.Employee.Name<br />
+        @Html.LabelFor(m => m.Employee.NationalId):
+        @Model.Employee.NationalId<br />
+        @Html.LabelFor(m => m.Employee.PersonalId):
+        @Model.Employee.PersonalId<br />
+        @Html.LabelFor(m => m.Employee.PhoneNumber):
+        @Model.Employee.PhoneNumber<br />
+        @Html.LabelFor(m => m.Employee.Address):
+        @Model.Employee.Address<br />
+        @Html.LabelFor(m => m.Employee.BirthDay):
+        @Model.Employee.BirthDay<br />
+        @Html.LabelFor(m => m.Employee.BirthPlace):
+        @Model.Employee.BirthPlace<br />

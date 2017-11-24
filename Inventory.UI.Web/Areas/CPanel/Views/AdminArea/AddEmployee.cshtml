@@ -1,0 +1,38 @@
+﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddEmployee", "AdminArea"))
+{
+    @Html.LabelFor(m => m.Employee.Name)
+    @Html.TextBoxFor(m => m.Employee.Name)
+    <br />
+    @Html.LabelFor(m => m.Employee.PersonalId)
+    @Html.TextBoxFor(m => m.Employee.PersonalId)
+    <br />
+    @Html.LabelFor(m => m.Employee.NationalId)
+    @Html.TextBoxFor(m => m.Employee.NationalId)
+    <br />
+    @Html.LabelFor(m => m.Employee.PhoneNumber)
+    @Html.TextBoxFor(m => m.Employee.PhoneNumber)
+    <br />
+    @Html.LabelFor(m => m.Employee.Address)
+    @Html.TextBoxFor(m => m.Employee.Address)
+    <br />
+    @Html.LabelFor(m => m.Employee.BirthDay)
+    @Html.TextBoxFor(m => m.Employee.BirthDay)
+    <br />
+    @Html.LabelFor(m => m.Employee.BirthPlace)
+    @Html.TextBoxFor(m => m.Employee.BirthPlace)
+    <br />
+    <input type="submit" value="ثبت" />
+}
+
+@if (Model != null)
+{
+    if (Model.Employee.EndUserMessage != null)
+    {
+        <div>@Model.Employee.EndUserMessage</div>
+    }
+}

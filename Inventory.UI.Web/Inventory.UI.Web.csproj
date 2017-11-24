@@ -206,6 +206,9 @@
     <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProduct.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProductsDetails.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\OwnProductList.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\IOProducts.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\Employee.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\AddEmployee.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

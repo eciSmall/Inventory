@@ -309,6 +309,40 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             return View(InvertoryViewModel);
         }
 
+        public ActionResult IOProducts()
+        {
+            return View();
+        }
+        public ActionResult Employee()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.Employee = new Employee()
+            {
+                Name = "جواد",      
+                Address = "Tabriz",
+                BirthDay = DateTime.Now,
+                BirthPlace = "biganeh",
+                NationalId = 11111,
+                PersonalId= 2222,
+                PhoneNumber = "09184551"
+            };
+            return View(InvertoryViewModel);
+        }
+        public ActionResult AddEmployee()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult AddEmployee(Employee employee)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.OwnProductsDetails = new OwnProductsDetails()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+            return View();
+        }
     }
 }

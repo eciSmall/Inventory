@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="BaseResponse.cs" />
     <Compile Include="CargoTransmission.cs" />
+    <Compile Include="Employee\Employee.cs" />
+    <Compile Include="Employee\InvertoryEmployee.cs" />
+    <Compile Include="Employee\PersonalDepartment.cs" />
     <Compile Include="Lorry.cs" />
     <Compile Include="Partner\ContractMeeting.cs" />
     <Compile Include="Partner\PartnerContract.cs" />
@@ -51,6 +54,9 @@
     <Compile Include="InvertoryExpenses.cs" />
     <Compile Include="Partner\Partner.cs" />
     <Compile Include="Partner\PartnerRequest.cs" />
+    <Compile Include="Products\IncomeProducts.cs" />
+    <Compile Include="Products\IOProducts.cs" />
+    <Compile Include="Products\OutcomeProducts.cs" />
     <Compile Include="Products\OwnProduct.cs" />
     <Compile Include="Products\OwnProductsDetails.cs" />
     <Compile Include="Products\ProductModel.cs" />

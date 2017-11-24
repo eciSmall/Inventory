@@ -10,8 +10,8 @@ namespace Inventory.UI.Web.Models
     {
         public Model.Inventory InventoryModel { get; set; }
         public List<Model.Inventory> InventoriesList = new List<Model.Inventory>();
-        public Model.RepairCheck RepairCheckModel { get; set; }
-        public List<Model.RepairCheck> RepairCheckList = new List<Model.RepairCheck>();
+        public RepairCheck RepairCheckModel { get; set; }
+        public List<RepairCheck> RepairCheckList = new List<Model.RepairCheck>();
         public RepairUnit RepairUnit;
         public List<RepairUnit> RepairUnitList;
         public List<InvertoryExpenses> InvertoryExpensesList;
@@ -26,5 +26,6 @@ namespace Inventory.UI.Web.Models
         public List<OwnProduct> OwnProductsList { get; set; }
         public OwnProductsDetails OwnProductsDetails { get; set; }
         public List<OwnProductsDetails> OwnProductsDetailsList { get; set; }
+        public Employee Employee { get; set; }
     }
 }
