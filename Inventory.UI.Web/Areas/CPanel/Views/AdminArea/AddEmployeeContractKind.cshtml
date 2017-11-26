@@ -3,9 +3,6 @@
     Layout = null;
 }
 
-    @Html.LabelFor(m => m.RepairUnit.Name): @Model.RepairUnit.Name<br />
-    @Html.LabelFor(m => m.RepairUnit.PhoneNumber): @Model.RepairUnit.PhoneNumber <br />
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +12,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>مشاهده ی اطلاعات جاپارک های اضافه شده</title>
+    <title>داشبورد</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -112,36 +109,35 @@
             </section>
             <!--End of menu column-->
             <!--Main section-->
-            <section class="col-md-9 col-md-pull-3 col-sm-9 col-sm-pull-3 table-section" id="content-section">
-                <div class="col-md-10 col-md-pull-1">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>نام</th>
-                                    <th>شماره تماس</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>تعمیر سقف عسگری</td>
-                                    <td>
-                                        568484
-                                    </td>
-                                </tr>
+            <section class="col-md-8 col-sm-8 col-md-pull-4 col-sm-pull-4" id="content-section">
+                <h1>افزودن گزارش</h1>
+                <br>
+                <!--replace null with appropriate URL-->
+                @using (Html.BeginForm("AddEmployeeContractKind", "AdminArea"))
+                {
+                    <section class="col-md-4 ">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="ContractKind">نوع قرارداد</span>
+                            <input type="text" name=@Html.DisplayNameFor(m => m.EmployeeContractKind.ContractKind) class="form-control" aria-describedby="income" required>
+                        </div>
+                    </section>
 
+                    <section class="col-md-4 col-md-pull-4">
+                        <button type="submit" class="btn btn-parkmark">افزودن</button>
+                    </section>
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-
-
-            </section>
-            <!--End of main section-->
-
-
+                }  
+                @if (Model != null)
+                {
+                    if (Model.EmployeeContractKind != null)
+                    {
+                        if (Model.EmployeeContractKind.EndUserMessage != null)
+                        {
+                        <div>@Model.EmployeeContractKind.EndUserMessage</div>
+                        }
+                    }
+                }
+            </section>           
         </div>
     </div>
 
@@ -149,3 +145,4 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>
+

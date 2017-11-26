@@ -1,11 +1,8 @@
-﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+﻿
 @{
     Layout = null;
 }
 
-    @Html.LabelFor(m => m.RepairUnit.Name): @Model.RepairUnit.Name<br />
-    @Html.LabelFor(m => m.RepairUnit.PhoneNumber): @Model.RepairUnit.PhoneNumber <br />
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -118,15 +115,23 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>نام</th>
-                                    <th>شماره تماس</th>
+                                    <th>تاریخ شروع قرارداد</th>
+                                    <th>تاریخ پایان قرارداد</th>
+                                    <th>اطلاعات کارمند</th>
+                                    <th>نوع قرارداد</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>تعمیر سقف عسگری</td>
+                                    <td>11.11.2017</td>
+                                    <td> 12.12.2027</td>
                                     <td>
-                                        568484
+                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                    <td>
+                                        رسمی
                                     </td>
                                 </tr>
 
@@ -135,7 +140,6 @@
                         </table>
                     </div>
                 </div>
-                <div class="clearfix"></div>
 
 
             </section>

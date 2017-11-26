@@ -35,6 +35,8 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             //    Email = adminLogin.Email,
             //    Password = adminLogin.Password
             //});
+            SessionState sessionState = new SessionState();
+            sessionState.Store(SessionKeys.AdminSession, "Admin");
             return RedirectToAction("Home", "AdminArea");
             //var result = new AdminModel();
             //if (result.Status == Model.ResponseStatus.Success)

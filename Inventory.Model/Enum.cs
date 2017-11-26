@@ -11,4 +11,13 @@ namespace Inventory.Model
         CPAuthentication,
         CPParking
     }
+    public enum ResponseStatus
+    {
+        Unknown = 0,
+        Success = 1,
+        InternalError = 2,
+        DuplicateObject = 3,
+        NotExist = 4,
+        AccessDenied = 5,
+    }
 }

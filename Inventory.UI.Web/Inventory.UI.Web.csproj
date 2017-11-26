@@ -154,6 +154,13 @@
     <Compile Include="Generals\Api\APIService.cs" />
     <Compile Include="Generals\Api\ConfigValues.cs" />
     <Compile Include="Generals\Attributes\AuthorizeAdminAttribute.cs" />
+    <Content Include="Areas\CPanel\Views\AdminArea\IO_OwnProducts.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\EmployeeContract.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\EmployeeContractKind.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\AddEmployeeContractKind.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\EmployeeisList.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\EmployeePaymentStatus.cshtml" />
+    <None Include="Generals\MenuKeys" />
     <Compile Include="Generals\Session\ISessionState.cs" />
     <Compile Include="Generals\Session\Sessionkeys.cs" />
     <Compile Include="Generals\Session\SessionState.cs" />
@@ -214,7 +221,7 @@
     <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProduct.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProductsDetails.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\OwnProductList.cshtml" />
-    <Content Include="Areas\CPanel\Views\AdminArea\IOProducts.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\IO_Products.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\Employee.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddEmployee.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

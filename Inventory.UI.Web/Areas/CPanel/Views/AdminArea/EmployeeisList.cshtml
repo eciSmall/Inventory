@@ -3,9 +3,21 @@
     Layout = null;
 }
 
-    @Html.LabelFor(m => m.RepairUnit.Name): @Model.RepairUnit.Name<br />
-    @Html.LabelFor(m => m.RepairUnit.PhoneNumber): @Model.RepairUnit.PhoneNumber <br />
-<!DOCTYPE html>
+@*@Html.LabelFor(m => m.Employee.Name):
+    @Model.Employee.Name<br />
+    @Html.LabelFor(m => m.Employee.NationalId):
+    @Model.Employee.NationalId<br />
+    @Html.LabelFor(m => m.Employee.PersonalId):
+    @Model.Employee.PersonalId<br />
+    @Html.LabelFor(m => m.Employee.PhoneNumber):
+    @Model.Employee.PhoneNumber<br />
+    @Html.LabelFor(m => m.Employee.Address):
+    @Model.Employee.Address<br />
+    @Html.LabelFor(m => m.Employee.BirthDay):
+    @Model.Employee.BirthDay<br />
+    @Html.LabelFor(m => m.Employee.BirthPlace):
+    @Model.Employee.BirthPlace<br />*@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +27,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>مشاهده ی اطلاعات جاپارک های اضافه شده</title>
+    <title>لیست کارمندان</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -119,23 +131,40 @@
                             <thead>
                                 <tr>
                                     <th>نام</th>
-                                    <th>شماره تماس</th>
+                                    <th>نمایش جزئیات</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>تعمیر سقف عسگری</td>
+                                    <td>حسن ریوندی</td>
                                     <td>
-                                        568484
+                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
                                     </td>
                                 </tr>
-
-
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>نام</th>
+                                    <th>نمایش جزئیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ممد کچل</td>
+                                    <td>
+                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="clearfix"></div>
 
 
             </section>
@@ -147,5 +176,22 @@
 
     <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmployeeisList</title>
+</head>
+<body>
+    <div> 
+    </div>
 </body>
 </html>

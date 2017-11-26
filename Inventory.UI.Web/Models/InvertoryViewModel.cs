@@ -27,5 +27,6 @@ namespace Inventory.UI.Web.Models
         public OwnProductsDetails OwnProductsDetails { get; set; }
         public List<OwnProductsDetails> OwnProductsDetailsList { get; set; }
         public Employee Employee { get; set; }
+        public EmployeeContractKind EmployeeContractKind { get; set; }
     }
 }

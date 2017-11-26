@@ -1,11 +1,28 @@
-﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+﻿
 @{
     Layout = null;
 }
 
-    @Html.LabelFor(m => m.RepairUnit.Name): @Model.RepairUnit.Name<br />
-    @Html.LabelFor(m => m.RepairUnit.PhoneNumber): @Model.RepairUnit.PhoneNumber <br />
-<!DOCTYPE html>
+@model Inventory.UI.Web.Models.InvertoryViewModel
+@{
+    Layout = null;
+}
+
+@*@Html.LabelFor(m => m.Employee.Name):
+    @Model.Employee.Name<br />
+    @Html.LabelFor(m => m.Employee.NationalId):
+    @Model.Employee.NationalId<br />
+    @Html.LabelFor(m => m.Employee.PersonalId):
+    @Model.Employee.PersonalId<br />
+    @Html.LabelFor(m => m.Employee.PhoneNumber):
+    @Model.Employee.PhoneNumber<br />
+    @Html.LabelFor(m => m.Employee.Address):
+    @Model.Employee.Address<br />
+    @Html.LabelFor(m => m.Employee.BirthDay):
+    @Model.Employee.BirthDay<br />
+    @Html.LabelFor(m => m.Employee.BirthPlace):
+    @Model.Employee.BirthPlace<br />*@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +32,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>مشاهده ی اطلاعات جاپارک های اضافه شده</title>
+    <title>وضعیت پرداخت کارمند</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -118,15 +135,19 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>نام</th>
-                                    <th>شماره تماس</th>
+                                    <th>ماه مربوط</th>
+                                    <th>وضعیت پرداخت</th>
+                                    <th>کارمند</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>تعمیر سقف عسگری</td>
+                                    <td>03.1397</td>
+                                    <td>پرداخت کامل</td>
                                     <td>
-                                        568484
+                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
                                     </td>
                                 </tr>
 
@@ -135,7 +156,6 @@
                         </table>
                     </div>
                 </div>
-                <div class="clearfix"></div>
 
 
             </section>
@@ -149,3 +169,4 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>
+

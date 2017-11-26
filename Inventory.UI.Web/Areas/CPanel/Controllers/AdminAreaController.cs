@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace Inventory.UI.Web.Areas.CPanel.Controllers
 {
     
-
+    [AuthorizeAdmin]
     public class AdminAreaController : BaseCPanelController
     {
         public ActionResult Home()
@@ -346,5 +346,47 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             };
             return View(InvertoryViewModel);
         }
+        public ActionResult IO_Products()
+        {
+            return View();
+        }
+        public ActionResult IO_OwnProducts()
+        {
+            return View();
+        }
+        public ActionResult EmployeeisList()
+        {
+            return View();
+        }
+        public ActionResult EmployeeContract()
+        {
+            return View();
+        }
+        public ActionResult EmployeeContractkind()
+        {
+            return View();
+        }
+
+        public ActionResult AddEmployeeContractKind()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddEmployeeContractKind(EmployeeContractKind employeeContractKind)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.EmployeeContractKind = new EmployeeContractKind()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult EmployeePaymentStatus()
+        {
+            return View();
+        }
+
     }
 }

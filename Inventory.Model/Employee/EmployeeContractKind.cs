@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Inventory.Model
 {
-    public class IncomeProducts
+    public class EmployeeContractKind : BaseResponse
     {
-        public int IncomeProductId { get; set; }
-        public DateTime IncomeDate { get; set; }
+        public int EmployeeContractKindId { get; set; }
+        public string ContractKind { get; set; }
     }
 }

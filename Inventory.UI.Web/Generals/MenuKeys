@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace Inventory.UI.Web.Generals
+{
+    public class MenuKeys
+    {
+        [Display(Name = "مشاهده لیست انبارها")]
+        public const string InvertoriesList = "InvertoriesList";
+    }
+}

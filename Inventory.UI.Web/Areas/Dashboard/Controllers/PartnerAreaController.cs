@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory.UI.Web.General.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,7 @@ namespace Inventory.UI.Web.Areas.Dashboard.Controllers
             return View();
         }
 
+        [AuthorizeAdmin]
         public ActionResult PartnerContract()
         {
             PartnerViewModel = new Models.PartnerViewModel();
@@ -30,6 +32,8 @@ namespace Inventory.UI.Web.Areas.Dashboard.Controllers
             };
             return View(PartnerViewModel);
         }
+
+        [AuthorizeAdmin]
         public ActionResult ContractMeeting()
         {
             PartnerViewModel = new Models.PartnerViewModel();
