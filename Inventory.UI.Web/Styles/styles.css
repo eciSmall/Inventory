@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'YekanWeb';
-    src: url('../font/YekanWeb-Regular.eot');
-    src: url('../font/YekanWeb-Regular.eot?#iefix') format('embedded-opentype'),
-    url('../font/YekanWeb-Regular.woff2') format('woff2'),
-    url('../font/YekanWeb-Regular.woff') format('woff'),
-    url('../font/YekanWeb-Regular.ttf') format('truetype'),
-    url('../font/YekanWeb-Regular.svg#YekanWeb-Regular') format('svg');
+    src: url('../fonts/YekanWeb-Regular.eot');
+    src: url('../fonts/YekanWeb-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/YekanWeb-Regular.woff2') format('woff2'),
+    url('../fonts/YekanWeb-Regular.woff') format('woff'),
+    url('../fonts/YekanWeb-Regular.ttf') format('truetype'),
+    url('../fonts/YekanWeb-Regular.svg#YekanWeb-Regular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -106,6 +106,7 @@ ul.menu-content li:first-child{
 .navbar-header span{
     font-size: 2em;
     padding: 0 10px;
+	color: #fff;
 }
 
 .menu{  /*Styles of right side menu*/
@@ -264,7 +265,7 @@ th{
 }
 
 td{
-    text-align: center;
+    text-align: right;
 }
 
 tr td:nth-child(2){
@@ -331,7 +332,10 @@ th{
 
 
 /*End of Page navigation styles*/
-
+.margin-less {
+	margin-right:0;
+	margin-left:0;
+}
 
 @media (max-width: 991px) {
     .input-group{
