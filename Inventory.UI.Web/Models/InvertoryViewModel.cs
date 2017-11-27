@@ -29,5 +29,6 @@ namespace Inventory.UI.Web.Models
         public Employee Employee { get; set; }
         public EmployeeContractKind EmployeeContractKind { get; set; }
         public EmployeeFault EmployeeFault { get; set; }
+        public PartnerRequest PartnerRequest { get; set; }
     }
 }

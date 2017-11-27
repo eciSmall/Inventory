@@ -44,70 +44,25 @@
                             </div>
                             <span class="menu-span">منو</span>
                         </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="menu-body">
                             <ul class="menu-content">
                                 <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="مشاهده لیست انبارها" href="/CPanel/AdminArea/InvertoriesList" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست انبارها
-
+                                    <a title="مشاهده اطلاعات" href="PartnerCop" >
+                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده اطلاعات
                                     </a>
                                 </li>
 
                                 <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="مشاهده لیست جابه جایی ها" href="/CPanel/AdminArea/CargoTransmissionList" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست جابه جایی ها
-
+                                    <a title="قراردادها" href="PartnerContract" >
+                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;قراردادها
                                     </a>
                                 </li>
                                 <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="مشاهده لیست ماشین های باری" href="/CPanel/AdminArea/LorryList" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست ماشین های باری
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="مشاهده لیست شرکت های همکار" href="/CPanel/AdminArea/PartnersList" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست شرکت های همکار
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="اضافه کردن محصول" href="/CPanel/AdminArea/AddProduct" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;اضافه کردن محصول
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="اضافه کردن یک نوع محصولات خود شرکت" href="/CPanel/AdminArea/AddOwnProduct" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;اضافه کردن یک نوع محصولات خود شرکت
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="اضافه کردن محصولات خود شرکت" href="/CPanel/AdminArea/AddOwnProductsDetails" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;اضافه کردن محصولات خود شرکت
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--Link should replace with correct url-->
-                                    <a title="مشاهده قرارداد شرکت های همکار" href="/Dashboard/PartnerArea/PartnerContract" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده قرارداد شرکت های همکار
-
+                                    <a title="درخواست‌ها" href="PartnerRequest" >
+                                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;درخواست‌ها
                                     </a>
                                 </li>
                             </ul>
-
-
                         </div>
                     </div>
                 </nav>
@@ -128,6 +83,9 @@
                                     <th>تاریخ خاتمه</th>
                                     <th>وضعیت پرداخت</th>
                                     <th>جلسات قرارداد</th>
+                                    <th>محصولات مربوط به قرارداد</th>
+                                    <th>انبارهای مربوط به قرارداد</th>
+                                    <th>سوله‌های مربوط به قرارداد</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -138,13 +96,26 @@
                                     <td> 11/25/2017</td>
                                     <td> تصفیه کامل</td>
                                     <td>
-                                        <a title="مشاهده" target="_blank" href="ContractMeeting" class="btn btn-parkmark btn-table">
+                                        <a title="مشاهده" href="ContractMeeting" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a title="مشاهده" href="/CPanel/AdminArea/ProductsList" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a title="مشاهده" href="/CPanel/AdminArea/InvertoriesList" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a title="مشاهده" href="/CPanel/AdminArea/StorageShed" class="btn btn-parkmark btn-table">
                                             مشاهده
                                         </a>
                                     </td>
                                 </tr>
-
-
                             </tbody>
                         </table>
                     </div>

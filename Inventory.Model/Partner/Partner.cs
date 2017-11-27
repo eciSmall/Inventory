@@ -19,5 +19,12 @@ namespace Inventory.Model
 
         [Display(Name = "آدرس")]
         public string Address { get; set; }
+
+        [Display(Name = "ایمیل")]
+        public string Email { get; set; }
+
+        [Display(Name = "پسوورد")]
+        public string Password { get; set; }
+
     }
 }

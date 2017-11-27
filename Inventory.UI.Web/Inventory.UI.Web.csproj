@@ -165,6 +165,8 @@
     <Content Include="Areas\CPanel\Views\AdminArea\EmployeeFaultList.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddEmployeeFault.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\StorageShed.cshtml" />
+    <Content Include="Areas\Dashboard\Views\PartnerArea\Home.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\YouNotAccess.cshtml" />
     <None Include="Generals\MenuKeys" />
     <Compile Include="Generals\Session\ISessionState.cs" />
     <Compile Include="Generals\Session\Sessionkeys.cs" />

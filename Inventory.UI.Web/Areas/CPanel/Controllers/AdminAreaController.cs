@@ -419,5 +419,24 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         {
             return View();
         }
+        public ActionResult PartnerRequest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PartnerRequest(PartnerRequest partnerRequest)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.PartnerRequest = new PartnerRequest()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(PartnerViewModel);
+        }
+        public ActionResult YouNotAccess()
+        {
+            return View();
+        }
     }
 }

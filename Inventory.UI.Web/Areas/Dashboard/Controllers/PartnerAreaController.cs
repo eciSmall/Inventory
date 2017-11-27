@@ -9,6 +9,10 @@ namespace Inventory.UI.Web.Areas.Dashboard.Controllers
 {
     public class PartnerAreaController : BaseDashboardController
     {
+        public ActionResult Home()
+        {
+            return View();
+        }
         public ActionResult PartnerCop()
         {
             return View();
@@ -18,7 +22,6 @@ namespace Inventory.UI.Web.Areas.Dashboard.Controllers
             return View();
         }
 
-        [AuthorizeAdmin]
         public ActionResult PartnerContract()
         {
             PartnerViewModel = new Models.PartnerViewModel();
@@ -33,7 +36,6 @@ namespace Inventory.UI.Web.Areas.Dashboard.Controllers
             return View(PartnerViewModel);
         }
 
-        [AuthorizeAdmin]
         public ActionResult ContractMeeting()
         {
             PartnerViewModel = new Models.PartnerViewModel();
