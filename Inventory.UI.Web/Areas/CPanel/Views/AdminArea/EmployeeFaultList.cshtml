@@ -1,32 +1,8 @@
-﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+﻿
 @{
     Layout = null;
 }
 
-@*@foreach (var i in Model.InventoriesList)
-{
-    <Div>
-        @i.Name :<br />
-        @Html.LabelFor(m => m.InventoryModel.PhoneNumber): @i.PhoneNumber<br />
-        @Html.LabelFor(m => m.InventoryModel.RepairCondition): @if(@i.RepairCondition){ <Div>نیازمند تعمیر</Div>}else{<Div>نیاز به تعمیر ندارد</Div>} <br />
-    @Html.LabelFor(m => m.InventoryModel.Foundation): @i.Foundation<br />
-    @Html.LabelFor(m => m.InventoryModel.State): @i.State<br />
-    @Html.LabelFor(m => m.InventoryModel.City): @i.City<br />
-    @Html.LabelFor(m => m.InventoryModel.Address): @i.Address<br />
-    @if (i.Representation)
-    {       
-         <Div>
-             @Html.LabelFor(m => m.InventoryModel.Representation):
-                @Html.ActionLink("ماشین های نمایندگی", "LorryList")<br />
-         </Div>
-    }
-    @Html.ActionLink("مشاهده تاریخچه بررسی های انجام شده جهت تعمیر", "RepairCheckList", new { name = i.Name })<br />
-    @Html.ActionLink("مخارج انبار", "InvertoryExpensesList", new { name = i.Name })<br />
-        
-    ------------
-</Div>
- }*@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,20 +12,16 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>مشاهده ی اطلاعات جاپارک های اضافه شده</title>
+    <title>لیست خطاها</title>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
+
             <section class="col-md-3 col-sm-3 menu">
                 <nav class="navbar">
                     <div class="container-fluid padding-less">
-                        <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
-                            <!--<button type="button" class="menu-circle collapsed" data-toggle="collapse"-->
-                            <!--data-target="#menu-body" aria-expanded="false">-->
-                            <!--<i class="fa fa-bars" aria-hidden="true"></i>-->
-                            <!--</button>-->
                             <button type="button" class=" menu-circle collapsed  hidden-lg hidden-md hidden-sm" data-toggle="collapse"
                                     data-target="#menu-body" aria-expanded="false">
                                 <i class="fa fa-bars" aria-hidden="true"></i>
@@ -59,12 +31,9 @@
                             </div>
                             <span class="menu-span">منو</span>
                         </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="menu-body">
                             <ul class="menu-content">
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="مشاهده لیست انبارها" href="/CPanel/AdminArea/InvertoriesList" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست انبارها
 
@@ -72,49 +41,42 @@
                                 </li>
 
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="مشاهده لیست جابه جایی ها" href="/CPanel/AdminArea/CargoTransmissionList" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست جابه جایی ها
 
                                     </a>
                                 </li>
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="مشاهده لیست ماشین های باری" href="/CPanel/AdminArea/LorryList" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست ماشین های باری
 
                                     </a>
                                 </li>
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="مشاهده لیست شرکت های همکار" href="/CPanel/AdminArea/PartnersList" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده لیست شرکت های همکار
 
                                     </a>
                                 </li>
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="اضافه کردن محصول" href="/CPanel/AdminArea/AddProduct" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;اضافه کردن محصول
 
                                     </a>
                                 </li>
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="اضافه کردن یک نوع محصولات خود شرکت" href="/CPanel/AdminArea/AddOwnProduct" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;اضافه کردن یک نوع محصولات خود شرکت
 
                                     </a>
                                 </li>
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="اضافه کردن محصولات خود شرکت" href="/CPanel/AdminArea/AddOwnProductsDetails" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;اضافه کردن محصولات خود شرکت
 
                                     </a>
                                 </li>
                                 <li>
-                                    <!--Link should replace with correct url-->
                                     <a title="مشاهده قرارداد شرکت های همکار" href="/Dashboard/PartnerArea/PartnerContract" target="_blank">
                                         <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;مشاهده قرارداد شرکت های همکار
 
@@ -129,70 +91,59 @@
 
                 <div class="clearfix"></div>
             </section>
+            <!--End of menu column-->
+            <!--Main section-->
             <section class="col-md-9 col-md-pull-3 col-sm-9 col-sm-pull-3 table-section" id="content-section">
                 <div class="col-md-10 col-md-pull-1">
-                    <div class="table-responsive">
+                    <div class="table-responsive">                        
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>نام</th>
-                                    <th>آدرس</th>
-                                    <th>استان</th>
-                                    <th>شهر</th>
-                                    <th>زیربنا</th>
-                                    <th>تلفن</th>
-                                    <th>وضعیت تعمیر</th>
-                                    <th>تاریخچه بررسی ها</th>
-                                    <th>مخارج</th>
-                                    <th>نمایندگی می‌باشد یا خیر؟</th>
-                                    <th>سوله‌های انبار</th>
+                                    <th>اضافه کردن خطا جدید</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>گل</td>
-                                    <td>تهران</td>
-                                    <td>تهران</td>
-                                    <td>132</td>
-                                    <td>0212222</td>
-                                    <td>نیازمند تعمیر</td>
                                     <td>
-                                        <a title="مشاهده" href="RepairCheckList" class="btn btn-parkmark btn-table">
-                                            مشاهده
+                                        <a title="رفتن به صفحه" href="AddEmployeeFault" class="btn btn-parkmark btn-table">
+                                            رفتن به صفحه
                                         </a>
                                     </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>تعداد خطا</th>
+                                    <th>تعداد دفعات کاهش حقوق</th>
+                                    <th>کارمند</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5</td>
+                                    <td>0</td>
                                     <td>
-                                        <a title="مشاهده" href="InvertoryExpensesList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>نمایندگی می‌باشد</td>
-                                    <td>
-                                        <a title="مشاهده" href="StorageShed" class="btn btn-parkmark btn-table">
+                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
                                             مشاهده
                                         </a>
                                     </td>
                                 </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-striped">
+                            <thead>
                                 <tr>
-                                    <td>جنگل</td>
-                                    <td>گیلان</td>
-                                    <td>رشت</td>
-                                    <td>555</td>
-                                    <td>5478549568</td>
-                                    <td>نیاز به تعمیر ندارد</td>
+                                    <th>نام</th>
+                                    <th>نمایش جزئیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ممد کچل</td>
                                     <td>
-                                        <a title="مشاهده"  href="RepairCheckList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a title="مشاهده" href="InvertoryExpensesList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>نمایندگی نمی‌باشد</td>
-                                    <td>
-                                        <a title="مشاهده" href="StorageShed" class="btn btn-parkmark btn-table">
+                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
                                             مشاهده
                                         </a>
                                     </td>
@@ -201,16 +152,12 @@
                         </table>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <section class="pages col-md-10 col-md-pull-1">
-                    <a title="1" href="#" number="1" class="active">1</a>
-                    <a title="1" href="#" number="1">2</a>
-                    <a title="1" href="#" number="1">3</a>
-                    <a class="no-hover">...</a>
-                    <a title="1" href="#" number="1">7</a>
-                </section>
+
 
             </section>
+            <!--End of main section-->
+
+
         </div>
     </div>
 

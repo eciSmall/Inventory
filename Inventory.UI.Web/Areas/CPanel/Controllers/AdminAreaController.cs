@@ -387,6 +387,37 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         {
             return View();
         }
+        public ActionResult EmployeePresenceStatus()
+        {
+            return View();
+        }
+        public ActionResult EmployeeRequest()
+        {
+            return View();
+        }
+        public ActionResult EmployeeFaultList()
+        {
+            return View();
+        }
+        public ActionResult AddEmployeeFault()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult AddEmployeeFault(EmployeeFault employeeFault)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.EmployeeFault = new EmployeeFault()
+            {
+                EndUserMessage = "با موفقیت اضافه شد"
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult StorageShed()
+        {
+            return View();
+        }
     }
 }

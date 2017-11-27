@@ -45,6 +45,7 @@
     <Compile Include="CargoTransmission.cs" />
     <Compile Include="Employee\Employee.cs" />
     <Compile Include="Employee\EmployeeContractKind.cs" />
+    <Compile Include="Employee\EmployeeFault.cs" />
     <Compile Include="Employee\InvertoryEmployee.cs" />
     <Compile Include="Employee\PersonalDepartment.cs" />
     <Compile Include="Lorry.cs" />
