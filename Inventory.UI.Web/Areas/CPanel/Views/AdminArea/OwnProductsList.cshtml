@@ -3,23 +3,17 @@
     Layout = null;
 }
 
-@*@foreach (var i in Model.ProductsList)
+@*@foreach (var i in Model.OwnProductsDetailsList)
 {
     <Div>
-        @Html.LabelFor(m => m.ProductModel.Name):
-        @i.Name<br />
-        @Html.LabelFor(m => m.ProductModel.Source):
-        @i.Source<br />
-        @Html.LabelFor(m => m.ProductModel.Destination):
-        @i.Destination<br />
-        @Html.LabelFor(m => m.ProductModel.Expiration):
-        @i.Expiration<br />
-        @Html.LabelFor(m => m.ProductModel.Opening):
-        @i.Opening<br />
-        @Html.LabelFor(m => m.ProductModel.Price):
-        @i.Price<br />
-        @Html.LabelFor(m => m.ProductModel.ProductNumber):
+        @Html.LabelFor(m => m.OwnProduct.Name):
+        @Model.OwnProduct.Name<br />
+        @Html.LabelFor(m => m.OwnProductsDetails.ProductNumber):
         @i.ProductNumber<br />
+        @Html.LabelFor(m => m.OwnProductsDetails.Source):
+        @i.Source<br />
+        @Html.LabelFor(m => m.OwnProductsDetails.Destination):
+        @i.Destination<br />
         ------------
     </Div>
 }*@
@@ -134,31 +128,25 @@
                 <div class="col-md-10 col-md-pull-1">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
-                        @foreach (var i in Model.ProductsList)
-                        {
-                            <thead>
-                                <tr>
-                                    <th>@Html.LabelFor(m => m.ProductModel.Name)</th>
-                                    <th>@Html.LabelFor(m => m.ProductModel.Source)</th>
-                                    <th>@Html.LabelFor(m => m.ProductModel.Destination)</th>
-                                    <th>@Html.LabelFor(m => m.ProductModel.Expiration)</th>
-                                    <th>@Html.LabelFor(m => m.ProductModel.Opening)</th>
-                                    <th>@Html.LabelFor(m => m.ProductModel.Price)</th>
-                                    <th>@Html.LabelFor(m => m.ProductModel.ProductNumber)</th>                                 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>@i.Name</td>
-                                    <td>@i.Source</td>
-                                    <td>@i.Destination</td>
-                                    <td>@i.Expiration</td>
-                                    <td>@i.Opening</td>
-                                    <td>@i.Price</td>
-                                    <td>@i.ProductNumber</td>
-                                </tr>
-                            </tbody>
-                        }
+                            @foreach (var i in Model.OwnProductsDetailsList)
+                            {
+                                <thead>
+                                    <tr>
+                                        <th>@Html.LabelFor(m => m.OwnProduct.Name)</th>
+                                        <th>@Html.LabelFor(m => m.OwnProductsDetails.Source)</th>
+                                        <th>@Html.LabelFor(m => m.OwnProductsDetails.Destination)</th>
+                                        <th>@Html.LabelFor(m => m.OwnProductsDetails.ProductNumber)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Model.OwnProduct.Name</td>
+                                        <td>@i.Source</td>
+                                        <td>@i.Destination</td>/td>
+                                        <td>@i.ProductNumber</td>
+                                    </tr>
+                                </tbody>
+                            }
                         </table>
                     </div>
                 </div>

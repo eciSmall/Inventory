@@ -265,7 +265,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             return View(InvertoryViewModel);
         }
 
-        public ActionResult OwnProductList()
+        public ActionResult OwnProductsList()
         {
             InvertoryViewModel = new InvertoryViewModel();
             InvertoryViewModel.OwnProductsDetailsList = new List<OwnProductsDetails>();

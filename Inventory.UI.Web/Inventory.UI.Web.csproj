@@ -225,7 +225,7 @@
     <Content Include="Areas\CPanel\Views\AdminArea\ProductsList.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProduct.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddOwnProductsDetails.cshtml" />
-    <Content Include="Areas\CPanel\Views\AdminArea\OwnProductList.cshtml" />
+    <Content Include="Areas\CPanel\Views\AdminArea\OwnProductsList.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\IO_Products.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\Employee.cshtml" />
     <Content Include="Areas\CPanel\Views\AdminArea\AddEmployee.cshtml" />
