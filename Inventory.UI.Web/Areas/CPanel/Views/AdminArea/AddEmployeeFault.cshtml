@@ -136,16 +136,19 @@
 
                 }
 
-            </section>
-            <!--End of main section-->
-
-            @if (Model != null)
+                @if (Model != null)
             {
                 if (Model.EmployeeFault.EndUserMessage != null)
                 {
-                    <div>@Model.EmployeeFault.EndUserMessage</div>
+                        <div class="clearfix"></div>
+                        <div class="text-center text-success">@Model.EmployeeFault.EndUserMessage</div>
+                    }
                 }
-            }
+
+            </section>
+            <!--End of main section-->
+
+           
         </div>
     </div>
 
