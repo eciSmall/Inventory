@@ -139,56 +139,61 @@
                 <br>
                 <!--replace null with appropriate URL-->
                 @using (Html.BeginForm("AddProduct", "AdminArea"))
-                {
+    {
 
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.Name)</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.ProductModel.Name) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.Source)</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.ProductModel.Source) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.Destination)</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.ProductModel.Destination) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.Price)</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.ProductModel.Price) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.ProductNumber)</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.ProductModel.ProductNumber) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.Opening)</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.ProductModel.Opening) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.Expiration)</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.ProductModel.Expiration) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.ProductModel.Name)</span>
+                    <input type="text" name=Name class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Source">@Html.DisplayNameFor(m => m.ProductModel.Source)</span>
+                    <input type="text" name=Source class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Destination">@Html.DisplayNameFor(m => m.ProductModel.Destination)</span>
+                    <input type="text" name=Destination class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Price">@Html.DisplayNameFor(m => m.ProductModel.Price)</span>
+                    <input type="number" name=Price class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="ProductNumber">@Html.DisplayNameFor(m => m.ProductModel.ProductNumber)</span>
+                    <input type="number" name=ProductNumber class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="_Opening">@Html.DisplayNameFor(m => m.ProductModel.Opening)</span>
+                    <input type="text" name=_Opening class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="_Expiration">@Html.DisplayNameFor(m => m.ProductModel.Expiration)</span>
+                    <input type="text" name=_Expiration class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="InventoryId">@Html.DisplayNameFor(m => m.ProductModel.InventoryId)</span>
+                    <input type="number" name=InventoryId class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
+            <section class="col-md-4 col-md-pull-4">
+                <button type="submit" class="btn btn-parkmark">افزودن</button>
+            </section>
 
-                    <section class="col-md-4 col-md-pull-4">
-                        <button type="submit" class="btn btn-parkmark">افزودن</button>
-                    </section>
-
-                }
+}
             </section>
             <!--End of main section-->
 

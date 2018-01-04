@@ -1,6 +1,7 @@
 ﻿using Inventory.Model;
 using Inventory.UI.Web.General.Attributes;
 using Inventory.UI.Web.Models;
+using Invertory.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,12 @@ using System.Web.Mvc;
 namespace Inventory.UI.Web.Areas.CPanel.Controllers
 {
     
-    [AuthorizeAdmin]
+    //[AuthorizeAdmin]
     public class AdminAreaController : BaseCPanelController
     {
+        EmployeeLogic employeeLogic = new EmployeeLogic();
+        InventoryLogic inventoryLogic = new InventoryLogic();
+        ProductLogic productLogic = new ProductLogic();
         public ActionResult Home()
         {
             return View();
@@ -20,7 +24,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         public ActionResult Invertory()
         {
             InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.InventoryModel = new Model.Inventory()
+            InvertoryViewModel.InventoryModel = new Model.InventoryModel()
             {
                 Address = "tehran",
                 City = "tehran",
@@ -33,33 +37,10 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             };
             return View(InvertoryViewModel);
         }
-        public ActionResult InvertoriesList(List<Model.Inventory> invertoriesLsit)
+        public ActionResult InvertoriesList(List<Model.InventoryModel> invertoriesLsit)
         {
-            InvertoryViewModel = new InvertoryViewModel();
-            InventoryModel = new Model.Inventory()
-            {
-                Address = "tehran",
-                City = "tehran",
-                Foundation = 132,
-                Name = "gol",
-                RepairCondition = true,
-                PhoneNumber = "0212222",
-                State = "tehran",
-                Representation = false
-            };
-            InvertoryViewModel.InventoriesList.Add(InventoryModel);
-            InventoryModel = new Model.Inventory()
-            {
-                Address = "rasht",
-                City = "rasht",
-                Foundation = 555,
-                Name = "Jangal",
-                RepairCondition = false,
-                PhoneNumber = "5478549568",
-                State = "rasht",
-                Representation = true
-            };
-            InvertoryViewModel.InventoriesList.Add(InventoryModel);
+            InvertoryViewModel = new InvertoryViewModel();           
+            InvertoryViewModel.InventoriesList = inventoryLogic.InventoryList();
             return View(InvertoryViewModel);
         }
         public ActionResult RepairCheckList(string name)
@@ -73,7 +54,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             };
             InvertoryViewModel = new InvertoryViewModel();
             InvertoryViewModel.RepairCheckList.Add(repairCheck);
-            InvertoryViewModel.InventoryModel = new Model.Inventory()
+            InvertoryViewModel.InventoryModel = new Model.InventoryModel()
             {
                 Name = name,
             };
@@ -91,7 +72,6 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             InvertoryViewModel.RepairUnitList.Add(InvertoryViewModel.RepairUnit);
             return View(InvertoryViewModel);
         }
-        //AddNewRepair
         public ActionResult RepairUnit()
         {
             InvertoryViewModel = new InvertoryViewModel();
@@ -105,35 +85,67 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         public ActionResult InvertoryExpensesList(string name)
         {
             InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.InvertoryExpenses = new InvertoryExpenses()
+            InvertoryViewModel.InvertoryExpenses = new InventoryExpenses()
             {
                 InvertoryIncome = 211,
                 Outcome = 163,
                 Tax = 15,
                 Year = DateTime.Now
             };
-            InvertoryViewModel.InvertoryExpensesList = new List<InvertoryExpenses>();
+            InvertoryViewModel.InvertoryExpensesList = new List<InventoryExpenses>();
             InvertoryViewModel.InvertoryExpensesList.Add(InvertoryViewModel.InvertoryExpenses);
-            InvertoryViewModel.InventoryModel = new Model.Inventory();
+            InvertoryViewModel.InventoryModel = new Model.InventoryModel();
             InvertoryViewModel.InventoryModel.Name = name;
             return View(InvertoryViewModel);
+        }
+
+        public ActionResult AddInventory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddInventory(InventoryModel inventoryModel)
+        {
+            var requestResult = inventoryLogic.Add(inventoryModel);
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.ProductModel = new ProductModel()
+            {
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
+            };
+            return View(InvertoryViewModel);
+        }
+
+        public ActionResult InventoryUpdatePage(InventoryModel inventoryModel)
+        {
+            return View(inventoryModel);
+        }
+
+        [HttpPost]
+        public ActionResult InventoryUpdate(InventoryModel inventoryModel)
+        {
+            return View(inventoryModel);
         }
         public ActionResult AddInvertoryExpenses(string name)
         {
             InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.InventoryModel = new Model.Inventory();
+            InvertoryViewModel.InventoriesList =  inventoryLogic.InventoryNameList();
+            InvertoryViewModel.InventoryModel = new Model.InventoryModel();
             InvertoryViewModel.InventoryModel.Name = name;
             return View(InvertoryViewModel);
         }
 
         [HttpPost]
-        public ActionResult AddInvertoryExpenses(InvertoryExpenses invertoryExpenses, string name)
+        public ActionResult AddInvertoryExpenses(InventoryExpenses invertoryExpenses, string name, string _year)
         {
+            invertoryExpenses.Year = Convert.ToDateTime(_year);
+            var requestResult = inventoryLogic.AddInventoryExpenses(invertoryExpenses);
             InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.InvertoryExpenses = new InvertoryExpenses();
-            InvertoryViewModel.InventoryModel = new Model.Inventory();
+            InvertoryViewModel.InvertoryExpenses = new InventoryExpenses();
+            InvertoryViewModel.InventoryModel = new Model.InventoryModel();
             InvertoryViewModel.InventoryModel.Name = name;
-            InvertoryViewModel.InvertoryExpenses.EndUserMessage = "با موفقیت اضافه شد";
+            InvertoryViewModel.InvertoryExpenses.EndUserMessage = requestResult.EndUserMessage;
             return View(InvertoryViewModel);
         }
 
@@ -222,12 +234,16 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProduct(ProductModel productModel)
+        public ActionResult AddProduct(ProductModel productModel, string _Opening, string _Expiration)
         {
+            productModel.Opening = Convert.ToDateTime(_Opening);
+            productModel.Expiration = Convert.ToDateTime(_Expiration);
+            var requestResult = productLogic.AddProduct(productModel);
             InvertoryViewModel = new InvertoryViewModel();
             InvertoryViewModel.ProductModel = new ProductModel()
             {
-                EndUserMessage = "با موفقیت اضافه شد"
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
             };
             return View(InvertoryViewModel);
         }
@@ -257,10 +273,11 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         [HttpPost]
         public ActionResult AddOwnProduct(OwnProduct ownProduct)
         {
+            var requestResult = productLogic.AddOwnProduct(ownProduct);
             InvertoryViewModel = new InvertoryViewModel();
             InvertoryViewModel.OwnProduct = new OwnProduct()
             {
-                EndUserMessage = "با موفقیت اضافه شد"
+                EndUserMessage = requestResult.EndUserMessage
             };
             return View(InvertoryViewModel);
         }
@@ -316,20 +333,9 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         {
             return View();
         }
-        public ActionResult Employee()
+        public ActionResult Employee(Employee employee)
         {
-            InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.Employee = new Employee()
-            {
-                Name = "جواد",      
-                Address = "Tabriz",
-                BirthDay = DateTime.Now,
-                BirthPlace = "biganeh",
-                NationalId = 11111,
-                PersonalId= 2222,
-                PhoneNumber = "09184551"
-            };
-            return View(InvertoryViewModel);
+            return View(employee);
         }
         public ActionResult AddEmployee()
         {
@@ -337,12 +343,15 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEmployee(Employee employee)
+        public ActionResult AddEmployee(Employee employee, string birthDay)
         {
+            employee.BirthDay = Convert.ToDateTime(birthDay);
+            var requestResult = employeeLogic.Add(employee);
             InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.OwnProductsDetails = new OwnProductsDetails()
+            InvertoryViewModel.Employee = new Employee()
             {
-                EndUserMessage = "با موفقیت اضافه شد"
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
             };
             return View(InvertoryViewModel);
         }
@@ -356,7 +365,9 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         }
         public ActionResult EmployeeisList()
         {
-            return View();
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.EmployeesList = employeeLogic.EmployeeList();
+            return View(InvertoryViewModel);
         }
         public ActionResult EmployeeContract()
         {
@@ -375,10 +386,12 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         [HttpPost]
         public ActionResult AddEmployeeContractKind(EmployeeContractKind employeeContractKind)
         {
+            var requestResult = employeeLogic.AddEmployeeContractKind(employeeContractKind);
             InvertoryViewModel = new InvertoryViewModel();
             InvertoryViewModel.EmployeeContractKind = new EmployeeContractKind()
             {
-                EndUserMessage = "با موفقیت اضافه شد"
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
             };
             return View(InvertoryViewModel);
         }
@@ -407,10 +420,12 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         [HttpPost]
         public ActionResult AddEmployeeFault(EmployeeFault employeeFault)
         {
+            var requestResult = employeeLogic.AddEmployeeFault(employeeFault);
             InvertoryViewModel = new InvertoryViewModel();
             InvertoryViewModel.EmployeeFault = new EmployeeFault()
             {
-                EndUserMessage = "با موفقیت اضافه شد"
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
             };
             return View(InvertoryViewModel);
         }

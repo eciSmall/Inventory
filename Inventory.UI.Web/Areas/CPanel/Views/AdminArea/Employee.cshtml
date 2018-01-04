@@ -1,4 +1,4 @@
-﻿@model Inventory.UI.Web.Models.InvertoryViewModel
+﻿@model Inventory.Model.Employee
 @{
     Layout = null;
 }
@@ -146,14 +146,14 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1325845</td>
-                                    <td>حسن ریوندی</td>
-                                    <td>02315418954</td>
-                                    <td>2310521515484</td>
-                                    <td>0215646465</td>
-                                    <td>اونجا</td>
-                                    <td>زلاند نو</td>
-                                    <td> 12.12.2027</td>
+                                    <td>@Model.EmployeeId</td>
+                                    <td>@Model.Name</td>
+                                    <td>@Model.PersonalId</td>
+                                    <td>@Model.NationalId</td>
+                                    <td>@Model.PhoneNumber</td>
+                                    <td>@Model.Address</td>
+                                    <td>@Model.BirthPlace</td>
+                                    <td>@Model.BirthDay</td>
                                     <td>
                                         <a title="مشاهده"  href="EmployeeContract" class="btn btn-parkmark btn-table">
                                             مشاهده

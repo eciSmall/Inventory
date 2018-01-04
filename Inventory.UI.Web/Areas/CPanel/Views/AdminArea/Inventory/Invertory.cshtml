@@ -3,6 +3,30 @@
     Layout = null;
 }
 
+@*@foreach (var i in Model.InventoriesList)
+    {
+        <Div>
+            @i.Name :<br />
+            @Html.LabelFor(m => m.InventoryModel.PhoneNumber): @i.PhoneNumber<br />
+            @Html.LabelFor(m => m.InventoryModel.RepairCondition): @if(@i.RepairCondition){ <Div>نیازمند تعمیر</Div>}else{<Div>نیاز به تعمیر ندارد</Div>} <br />
+        @Html.LabelFor(m => m.InventoryModel.Foundation): @i.Foundation<br />
+        @Html.LabelFor(m => m.InventoryModel.State): @i.State<br />
+        @Html.LabelFor(m => m.InventoryModel.City): @i.City<br />
+        @Html.LabelFor(m => m.InventoryModel.Address): @i.Address<br />
+        @if (i.Representation)
+        {
+             <Div>
+                 @Html.LabelFor(m => m.InventoryModel.Representation):
+                    @Html.ActionLink("ماشین های نمایندگی", "LorryList")<br />
+             </Div>
+        }
+        @Html.ActionLink("مشاهده تاریخچه بررسی های انجام شده جهت تعمیر", "RepairCheckList", new { name = i.Name })<br />
+        @Html.ActionLink("مخارج انبار", "InvertoryExpensesList", new { name = i.Name })<br />
+
+        ------------
+    </Div>
+     }*@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,13 +36,11 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>اضافه کردن خطا کارمند</title>
+    <title>مشاهده ی اطلاعات جاپارک های اضافه شده</title>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-
-            <!--Menu column-->
             <section class="col-md-3 col-sm-3 menu">
                 <nav class="navbar">
                     <div class="container-fluid padding-less">
@@ -100,44 +122,88 @@
                                 </li>
                             </ul>
 
+
                         </div>
+                    </div>
                 </nav>
 
                 <div class="clearfix"></div>
             </section>
-            <!--End of menu column-->
-            <!--Main section-->
-            <section class="col-md-8 col-sm-8 col-md-pull-4 col-sm-pull-4" id="content-section">
-                <h1>اضافه کردن خطا کارمند</h1>
-                <br>
-                <!--replace null with appropriate URL-->
-                @using (Html.BeginForm("AddEmployeeFault", "AdminArea"))
-                {
-                <section class="col-md-4 ">
-                    <div class="input-group">
-                        <span class="input-group-addon" id="EmployeeId"> @Html.DisplayNameFor(m => m.EmployeeFault.EmployeeId) </span>
-                        <input type="number" id="EmployeeId" name=EmployeeId class="form-control" aria-describedby="EmployeeId" required>
-                    </div>
-                </section>
+            <section class="col-md-9 col-md-pull-3 col-sm-9 col-sm-pull-3 table-section" id="content-section">
+                <div class="col-md-10 col-md-pull-1">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>نام</th>
+                                    <th>آدرس</th>
+                                    <th>استان</th>
+                                    <th>شهر</th>
+                                    <th>زیربنا</th>
+                                    <th>تلفن</th>
+                                    <th>وضعیت تعمیر</th>
+                                    <th>تاریخچه بررسی ها</th>
+                                    <th>مخارج</th>
+                                    <th>نمایندگی می‌باشد یا خیر؟</th>
+                                    <th>سوله‌های انبار</th>
+                                    <th>حذف</th>
+                                    <th>ویرایش</th>
+                                </tr>
+                            </thead>
 
-            <button type="submit" class="btn btn-parkmark">افزودن</button>
-                }
-                @if (Model != null)
-                {
-                    if (Model.EmployeeFault != null)
-                    {
-                        if (Model.EmployeeFault.EndUserMessage != null)
-                        {
-                            <div class="clearfix"></div>
-                            <div class="text-center text-success">@Model.EmployeeFault.EndUserMessage</div>
-                        }
-                    }
-                }
+                            <tbody>
+                                <tr>
+                                    <td>@Model.InventoryModel.Name</td>
+                                    <td>@Model.InventoryModel.Address</td>
+                                    <td>@Model.InventoryModel.State</td>
+                                    <td>@Model.InventoryModel.City</td>
+                                    <td>@Model.InventoryModel.Foundation</td>
+                                    <td>@Model.InventoryModel.PhoneNumber</td>
+                                    @if (@Model.InventoryModel.RepairCondition == true)
+    {
+                                <td>نیازمند تعمیر می‌باشد</td>
+}
+else
+{
+                                <td>نیازمند تعمیر نمی‌باشد</td>
+}
+                                    <td>
+                                        <a title="مشاهده" href="RepairCheckList" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a title="مشاهده" href="InvertoryExpensesList" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                    @if (Model.InventoryModel.Representation == true)
+    {
+                                <td>نمایندگی می‌باشد</td>
+}
+else
+{
+                                <td>نمایندگی نمی‌باشد</td>
+}
+                                    <td>
+                                        <a title="مشاهده" href="StorageShed" class="btn btn-parkmark btn-table">
+                                            مشاهده
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("حذف", "InventoryDelete", new { Model.InventoryModel }, new { @class = "btn btn-parkmark btn-table" })
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("ویرایش", "InventoryUpdate", new { Model.InventoryModel }, new { @class = "btn btn-parkmark btn-table" })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
 
             </section>
-            <!--End of main section-->
-
-           
         </div>
     </div>
 

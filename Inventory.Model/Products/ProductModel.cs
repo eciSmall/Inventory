@@ -31,5 +31,8 @@ namespace Inventory.Model
 
         [Display(Name = "قیمت")]
         public string Price  { get; set; }
+
+        [Display(Name = "انبار مربوط")]
+        public int InventoryId { get; set; }
     }
 }

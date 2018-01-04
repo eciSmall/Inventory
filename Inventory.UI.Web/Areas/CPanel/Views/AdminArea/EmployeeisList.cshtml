@@ -135,43 +135,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>حسن ریوندی</td>
-                                    <td>
-                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>نام</th>
-                                    <th>نمایش جزئیات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ممد کچل</td>
-                                    <td>
-                                        <a title="مشاهده" href="Employee" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                </tr>
+                                @foreach (var employee in Model.EmployeesList)
+                                {
+                            <tr>
+                                <td>@employee.Name</td>
+                                <td>
+                                    @Html.ActionLink("مشاهده", "Employee", employee, new  { @class = "btn btn-parkmark btn-table" })
+                                </td>
+                            </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-
-            </section>
-            <!--End of main section-->
-
-
         </div>
+
+        </section>
+        <!--End of main section-->
+
+
+    </div>
     </div>
 
     <script type="text/javascript" src="js/jquery-3.2.1.js"></script>

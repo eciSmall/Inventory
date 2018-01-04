@@ -24,7 +24,7 @@ namespace Inventory.Model
         public string BirthPlace { get; set; }
 
         [Display(Name = "تاریخ تولد")]
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
 
         [Display(Name = "شماره تلفن")]
         public string PhoneNumber { get; set; }

@@ -8,14 +8,14 @@ namespace Inventory.UI.Web.Models
 {
     public class InvertoryViewModel
     {
-        public Model.Inventory InventoryModel { get; set; }
-        public List<Model.Inventory> InventoriesList = new List<Model.Inventory>();
+        public Model.InventoryModel InventoryModel { get; set; }
+        public List<Model.InventoryModel> InventoriesList = new List<Model.InventoryModel>();
         public RepairCheck RepairCheckModel { get; set; }
         public List<RepairCheck> RepairCheckList = new List<Model.RepairCheck>();
         public RepairUnit RepairUnit;
         public List<RepairUnit> RepairUnitList;
-        public List<InvertoryExpenses> InvertoryExpensesList;
-        public InvertoryExpenses InvertoryExpenses;
+        public List<InventoryExpenses> InvertoryExpensesList;
+        public InventoryExpenses InvertoryExpenses;
         public Lorry Lorry;
         public List<Lorry> LorryList;
         public List<CargoTransmission> CargoTransmissionList;
@@ -27,6 +27,7 @@ namespace Inventory.UI.Web.Models
         public OwnProductsDetails OwnProductsDetails { get; set; }
         public List<OwnProductsDetails> OwnProductsDetailsList { get; set; }
         public Employee Employee { get; set; }
+        public List<Employee> EmployeesList { get; set; }
         public EmployeeContractKind EmployeeContractKind { get; set; }
         public EmployeeFault EmployeeFault { get; set; }
         public PartnerRequest PartnerRequest { get; set; }

@@ -3,29 +3,9 @@
     Layout = null;
 }
 
-@*@foreach (var i in Model.InventoriesList)
-{
-    <Div>
-        @i.Name :<br />
-        @Html.LabelFor(m => m.InventoryModel.PhoneNumber): @i.PhoneNumber<br />
-        @Html.LabelFor(m => m.InventoryModel.RepairCondition): @if(@i.RepairCondition){ <Div>نیازمند تعمیر</Div>}else{<Div>نیاز به تعمیر ندارد</Div>} <br />
-    @Html.LabelFor(m => m.InventoryModel.Foundation): @i.Foundation<br />
-    @Html.LabelFor(m => m.InventoryModel.State): @i.State<br />
-    @Html.LabelFor(m => m.InventoryModel.City): @i.City<br />
-    @Html.LabelFor(m => m.InventoryModel.Address): @i.Address<br />
-    @if (i.Representation)
-    {       
-         <Div>
-             @Html.LabelFor(m => m.InventoryModel.Representation):
-                @Html.ActionLink("ماشین های نمایندگی", "LorryList")<br />
-         </Div>
-    }
-    @Html.ActionLink("مشاهده تاریخچه بررسی های انجام شده جهت تعمیر", "RepairCheckList", new { name = i.Name })<br />
-    @Html.ActionLink("مخارج انبار", "InvertoryExpensesList", new { name = i.Name })<br />
-        
-    ------------
-</Div>
- }*@
+@Model.InventoryModel.Name :<br />
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,11 +16,13 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>مشاهده ی اطلاعات جاپارک های اضافه شده</title>
+    <title>داشبورد</title>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
+
+            <!--Menu column-->
             <section class="col-md-3 col-sm-3 menu">
                 <nav class="navbar">
                     <div class="container-fluid padding-less">
@@ -129,90 +111,64 @@
 
                 <div class="clearfix"></div>
             </section>
-            <section class="col-md-9 col-md-pull-3 col-sm-9 col-sm-pull-3 table-section" id="content-section">
-                <div class="col-md-10 col-md-pull-1">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>نام</th>
-                                    <th>آدرس</th>
-                                    <th>استان</th>
-                                    <th>شهر</th>
-                                    <th>زیربنا</th>
-                                    <th>تلفن</th>
-                                    <th>وضعیت تعمیر</th>
-                                    <th>تاریخچه بررسی ها</th>
-                                    <th>مخارج</th>
-                                    <th>نمایندگی می‌باشد یا خیر؟</th>
-                                    <th>سوله‌های انبار</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>گل</td>
-                                    <td>دروازه شمرون</td>
-                                    <td>تهران</td>
-                                    <td>تهران</td>
-                                    <td>132</td>
-                                    <td>0212222</td>
-                                    <td>نیازمند تعمیر</td>
-                                    <td>
-                                        <a title="مشاهده" href="RepairCheckList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a title="مشاهده" href="InvertoryExpensesList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>نمایندگی می‌باشد</td>
-                                    <td>
-                                        <a title="مشاهده" href="StorageShed" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>جنگل</td>
-                                    <td>دروازه شمرون</td>
-                                    <td>گیلان</td>
-                                    <td>رشت</td>
-                                    <td>555</td>
-                                    <td>5478549568</td>
-                                    <td>نیاز به تعمیر ندارد</td>
-                                    <td>
-                                        <a title="مشاهده"  href="RepairCheckList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a title="مشاهده" href="InvertoryExpensesList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>نمایندگی نمی‌باشد</td>
-                                    <td>
-                                        <a title="مشاهده" href="StorageShed" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <!--End of menu column-->
+            <!--Main section-->
+            <section class="col-md-8 col-sm-8 col-md-pull-4 col-sm-pull-4" id="content-section">
+                <h1>افزودن گزارش</h1>
+                <br>
+                <!--replace null with appropriate URL-->
+                @using (Html.BeginForm("AddInvertoryExpenses", "AdminArea", new { name = @Model.InventoryModel.Name }))
+    {
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="InvertoryIncome">درآمد</span>
+                    <input type="number" name=InvertoryIncome class="form-control" aria-describedby="InvertoryIncome" required>
                 </div>
-                <div class="clearfix"></div>
-                <section class="pages col-md-10 col-md-pull-1">
-                    <a title="1" href="#" number="1" class="active">1</a>
-                    <a title="1" href="#" number="1">2</a>
-                    <a title="1" href="#" number="1">3</a>
-                    <a class="no-hover">...</a>
-                    <a title="1" href="#" number="1">7</a>
-                </section>
+            </section>
+
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Outcome">مخارج</span>
+                    <input type="number" name=Outcome class="form-control" aria-describedby="makharej" required>
+                </div>
+            </section>
+
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="tax">مالیات</span>
+                    <input type="number" step="1" min="0" name=tax class="form-control" aria-describedby="tax" required>
+                </div>
+            </section>
+
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="_year">سال</span>
+                    <input type="text" name=_year class="form-control" aria-describedby="year" required>
+                </div>
+            </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="InvertoryId">انبار مربوط</span>
+                    <input type="number" name=InvertoryId class="form-control" aria-describedby="InvertoryId" required>
+                </div>
+            </section>
+
+            <section class="col-md-4 col-md-pull-4">
+                <button type="submit" class="btn btn-parkmark">افزودن</button>
+            </section>
+
+}
+                @if (Model.InvertoryExpenses != null)
+    {
+        if (Model.InvertoryExpenses.EndUserMessage != null)
+        {
+            <div>@Model.InvertoryExpenses.EndUserMessage</div>
+}
+}
 
             </section>
+            <!--End of main section-->
+
         </div>
     </div>
 

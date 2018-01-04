@@ -16,5 +16,8 @@ namespace Inventory.Model
 
         [Display(Name = "تاریخچه کاهش حقوق")]
         public int SalaryReductionHiostory { get; set; }
+
+        [Display(Name = "شناسه کارمند")]
+        public int EmployeeId { get; set; }
     }
 }

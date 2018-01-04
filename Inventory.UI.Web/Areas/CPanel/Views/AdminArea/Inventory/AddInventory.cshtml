@@ -3,10 +3,6 @@
     Layout = null;
 }
 
-@Model.InventoryModel.Name :<br />
-
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +12,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>داشبورد</title>
+    <title>اضافه کردن خطا کارمند</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -104,9 +100,7 @@
                                 </li>
                             </ul>
 
-
                         </div>
-                    </div>
                 </nav>
 
                 <div class="clearfix"></div>
@@ -114,54 +108,76 @@
             <!--End of menu column-->
             <!--Main section-->
             <section class="col-md-8 col-sm-8 col-md-pull-4 col-sm-pull-4" id="content-section">
-                <h1>افزودن گزارش</h1>
+                <h1>اضافه کردن انبار</h1>
                 <br>
                 <!--replace null with appropriate URL-->
-@using (Html.BeginForm("AddInvertoryExpenses", "AdminArea", new { name = @Model.InventoryModel.Name }))
-{
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="income">درآمد</span>
-                            <input type="number" name=@Html.DisplayNameFor(m => m.InvertoryExpenses.InvertoryIncome) class="form-control" aria-describedby="income" required>
-                        </div>
-                    </section>
+                @using (Html.BeginForm("AddEmployeeFault", "AdminArea"))
+    {
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Name"> @Html.DisplayNameFor(m => m.InventoryModel.Name) </span>
+                    <input type="text" name=Name class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
 
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="makharej">مخارج</span>
-                            <input type="number" name=@Html.DisplayNameFor(m => m.InvertoryExpenses.Outcome) class="form-control" aria-describedby="makharej" required>
-                        </div>
-                    </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="PhoneNumber"> @Html.DisplayNameFor(m => m.InventoryModel.State) </span>
+                    <input type="text" name=PhoneNumber class="form-control" aria-describedby="PhoneNumber" required>
+                </div>
+            </section>
 
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="tax">مالیات</span>
-                            <input type="number" step="1" min="0" name=@Html.DisplayNameFor(m => m.InvertoryExpenses.Tax) class="form-control" aria-describedby="tax" required>
-                        </div>
-                    </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="City"> @Html.DisplayNameFor(m => m.InventoryModel.City) </span>
+                    <input type="text" name=City class="form-control" aria-describedby="City" required>
+                </div>
+            </section>
 
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="year">سال</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.InvertoryExpenses.Year) class="form-control" aria-describedby="year" required>
-                        </div>
-                    </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Address"> @Html.DisplayNameFor(m => m.InventoryModel.Address) </span>
+                    <input type="text" name=Address class="form-control" aria-describedby="Address" required>
+                </div>
+            </section>
 
-                    <section class="col-md-4 col-md-pull-4">
-                        <button type="submit" class="btn btn-parkmark">افزودن</button>
-                    </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="PhoneNumber"> @Html.DisplayNameFor(m => m.InventoryModel.PhoneNumber) </span>
+                    <input type="number" name=PhoneNumber class="form-control" aria-describedby="PhoneNumber" required>
+                </div>
+            </section>
 
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Foundation"> @Html.DisplayNameFor(m => m.InventoryModel.Foundation) </span>
+                    <input type="number" name=Foundation class="form-control" aria-describedby="Foundation" required>
+                </div>
+            </section>
+
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Representation"> @Html.DisplayNameFor(m => m.InventoryModel.Representation) </span>
+                    <input type="checkbox" name="Representation" class="form-control" aria-describedby="Representation" required>نمایندگی بودن<br>
+                </div>
+            </section>
+            <button type="submit" class="btn btn-parkmark">افزودن</button>
 }
-                @if (Model.InvertoryExpenses != null)
-                {
-                    if (Model.InvertoryExpenses.EndUserMessage != null)
-                    {
-                        <div>@Model.InvertoryExpenses.EndUserMessage</div>
-                    }
-                }
+                @if (Model != null)
+    {
+        if (Model.InventoryModel != null)
+        {
+            if (Model.InventoryModel.EndUserMessage != null)
+            {
+                <div class="clearfix"></div>
+                <div class="text-center text-success">@Model.InventoryModel.EndUserMessage</div>
+}
+}
+}
 
             </section>
             <!--End of main section-->
+
 
         </div>
     </div>

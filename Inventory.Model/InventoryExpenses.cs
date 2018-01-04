@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Inventory.Model
 {
-    public class InvertoryExpenses : BaseResponse
+    public class InventoryExpenses : BaseResponse
     {
         public int InvertoryExpensesId { get; set; }
 
@@ -22,5 +22,8 @@ namespace Inventory.Model
 
         [Display(Name = "مخارج")]
         public int Outcome { get; set; }
+
+        [Display(Name = "انبار مربوط")]
+        public int InvertoryId { get; set; }
     }
 }

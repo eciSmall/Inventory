@@ -14,7 +14,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
     {
         protected APIService<CPanelAPIControllers> apiCaller = new APIService<CPanelAPIControllers>();
         protected SessionState SessionState = new SessionState();
-        protected Model.Inventory InventoryModel;
+        protected Model.InventoryModel InventoryModel;
         protected InvertoryViewModel InvertoryViewModel;
         protected PartnerViewModel PartnerViewModel;
     }

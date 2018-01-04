@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1f162a1e2d6c4ca3b8c2e2b077a033bb" Name="Diagram1">
+        <EntityTypeShape EntityType="InvertoryModel.Employee" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.EmployeeContractKind" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.EmployeeFault" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.Inventory" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.InventoryExpens" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.Lorry" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.OwnProduct" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.OwnProductsList" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.Product" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.IO_OwnProducts" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvertoryModel.IO_Products" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="InvertoryModel.FK__EmployeeF__Emplo__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="InvertoryModel.FK__Inventory__Inven__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="InvertoryModel.FK__Lorry__Inventory__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="InvertoryModel.FK__Product__Invento__619B8048" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

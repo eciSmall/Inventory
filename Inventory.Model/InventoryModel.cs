@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Inventory.Model
 {
-    public class Inventory
+    public class InventoryModel : BaseResponse
     {
         public int InventoryId { get; set; }
 

@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InvertoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NationalId" Type="int" />
+          <Property Name="PersonalId" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDay" Type="datetime2" Precision="7" />
+          <Property Name="BirthPlace" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeContractKind">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractKind" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="EmployeeFault">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="int" />
+          <Property Name="SalaryReductionTimes" Type="int" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="RepairCondition" Type="bit" />
+          <Property Name="Representation" Type="bit" />
+          <Property Name="Foundation" Type="int" />
+        </EntityType>
+        <EntityType Name="InventoryExpenses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InventoryIncome" Type="int" />
+          <Property Name="InventoryTax" Type="int" />
+          <Property Name="Year" Type="datetime2" Precision="7" />
+          <Property Name="InventoryOutcome" Type="int" />
+          <Property Name="InventoryId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Invertory.dbo.IO_OwnProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IO_OwnProducts">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="IncomeDate" Type="date" />
+          <Property Name="OutComeDate" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Invertory.dbo.IO_Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IO_Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="IncomeDate" Type="date" />
+          <Property Name="OutComeDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Lorry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kind" Type="nvarchar" MaxLength="50" />
+          <Property Name="InventoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="OwnProduct">
+          <Key>
+            <PropertyRef Name="OwnProductId" />
+          </Key>
+          <Property Name="OwnProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kind" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnProductsList">
+          <Key>
+            <PropertyRef Name="OwnProductsListId" />
+          </Key>
+          <Property Name="OwnProductsListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Source" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="OpeningDate" Type="datetime2" Precision="7" />
+          <Property Name="ExpirationDate" Type="datetime2" Precision="7" />
+          <Property Name="Source" Type="nvarchar" MaxLength="50" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="50" />
+          <Property Name="InventoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Invertory.dbo.ProductContain' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ProductContain">
+          <Property Name="OwnProductListId" Type="int" />
+          <Property Name="OwnProductId" Type="int" />
+        </EntityType>-->
+        <Association Name="FK__EmployeeF__Emplo__4D94879B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeFault" Type="Self.EmployeeFault" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeFault">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__Inven__60A75C0F">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="InventoryExpenses" Type="Self.InventoryExpenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InventoryExpenses">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lorry__Inventory__5FB337D6">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Lorry" Type="Self.Lorry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lorry">
+              <PropertyRef Name="InventoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Invento__619B8048">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ProductCo__OwnPr__30F848ED" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ProductCo__OwnPr__33D4B598" />-->
+        <EntityContainer Name="InvertoryModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeContractKind" EntityType="Self.EmployeeContractKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeFault" EntityType="Self.EmployeeFault" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryExpenses" EntityType="Self.InventoryExpenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lorry" EntityType="Self.Lorry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnProduct" EntityType="Self.OwnProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnProductsList" EntityType="Self.OwnProductsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IO_OwnProducts" EntityType="Self.IO_OwnProducts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IO_OwnProducts].[ProductId] AS [ProductId], 
+    [IO_OwnProducts].[EmployeeId] AS [EmployeeId], 
+    [IO_OwnProducts].[IncomeDate] AS [IncomeDate], 
+    [IO_OwnProducts].[OutComeDate] AS [OutComeDate]
+    FROM [dbo].[IO_OwnProducts] AS [IO_OwnProducts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IO_Products" EntityType="Self.IO_Products" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IO_Products].[ProductId] AS [ProductId], 
+    [IO_Products].[EmployeeId] AS [EmployeeId], 
+    [IO_Products].[IncomeDate] AS [IncomeDate], 
+    [IO_Products].[OutComeDate] AS [OutComeDate]
+    FROM [dbo].[IO_Products] AS [IO_Products]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__EmployeeF__Emplo__4D94879B" Association="Self.FK__EmployeeF__Emplo__4D94879B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeFault" EntitySet="EmployeeFault" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__Inven__60A75C0F" Association="Self.FK__Inventory__Inven__60A75C0F">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="InventoryExpenses" EntitySet="InventoryExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lorry__Inventory__5FB337D6" Association="Self.FK__Lorry__Inventory__5FB337D6">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Lorry" EntitySet="Lorry" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Invento__619B8048" Association="Self.FK__Product__Invento__619B8048">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InvertoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NationalId" Type="Int32" />
+          <Property Name="PersonalId" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Precision="7" />
+          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeFaults" Relationship="Self.FK__EmployeeF__Emplo__4D94879B" FromRole="Employee" ToRole="EmployeeFault" />
+        </EntityType>
+        <EntityType Name="EmployeeContractKind">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractKind" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeFault">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="SalaryReductionTimes" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__EmployeeF__Emplo__4D94879B" FromRole="EmployeeFault" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RepairCondition" Type="Boolean" />
+          <Property Name="Representation" Type="Boolean" />
+          <Property Name="Foundation" Type="Int32" />
+          <NavigationProperty Name="InventoryExpenses" Relationship="Self.FK__Inventory__Inven__60A75C0F" FromRole="Inventory" ToRole="InventoryExpenses" />
+          <NavigationProperty Name="Lorries" Relationship="Self.FK__Lorry__Inventory__5FB337D6" FromRole="Inventory" ToRole="Lorry" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Invento__619B8048" FromRole="Inventory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="InventoryExpens">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InventoryIncome" Type="Int32" />
+          <Property Name="InventoryTax" Type="Int32" />
+          <Property Name="Year" Type="DateTime" Precision="7" />
+          <Property Name="InventoryOutcome" Type="Int32" />
+          <Property Name="InventoryId" Type="Int32" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK__Inventory__Inven__60A75C0F" FromRole="InventoryExpenses" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="Lorry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InventoryID" Type="Int32" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK__Lorry__Inventory__5FB337D6" FromRole="Lorry" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="OwnProduct">
+          <Key>
+            <PropertyRef Name="OwnProductId" />
+          </Key>
+          <Property Name="OwnProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnProductsList">
+          <Key>
+            <PropertyRef Name="OwnProductsListId" />
+          </Key>
+          <Property Name="OwnProductsListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="OpeningDate" Type="DateTime" Precision="7" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="7" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InventoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK__Product__Invento__619B8048" FromRole="Product" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="IO_OwnProducts">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="IncomeDate" Type="DateTime" Precision="0" />
+          <Property Name="OutComeDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="IO_Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="IncomeDate" Type="DateTime" Precision="0" />
+          <Property Name="OutComeDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK__EmployeeF__Emplo__4D94879B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeFault" Type="Self.EmployeeFault" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeFault">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__Inven__60A75C0F">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="InventoryExpenses" Type="Self.InventoryExpens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InventoryExpenses">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lorry__Inventory__5FB337D6">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Lorry" Type="Self.Lorry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lorry">
+              <PropertyRef Name="InventoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Invento__619B8048">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InvertoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeContractKinds" EntityType="Self.EmployeeContractKind" />
+          <EntitySet Name="EmployeeFaults" EntityType="Self.EmployeeFault" />
+          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+          <EntitySet Name="InventoryExpenses" EntityType="Self.InventoryExpens" />
+          <EntitySet Name="Lorries" EntityType="Self.Lorry" />
+          <EntitySet Name="OwnProducts" EntityType="Self.OwnProduct" />
+          <EntitySet Name="OwnProductsLists" EntityType="Self.OwnProductsList" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="IO_OwnProducts" EntityType="Self.IO_OwnProducts" />
+          <EntitySet Name="IO_Products" EntityType="Self.IO_Products" />
+          <AssociationSet Name="FK__EmployeeF__Emplo__4D94879B" Association="Self.FK__EmployeeF__Emplo__4D94879B">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeFault" EntitySet="EmployeeFaults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__Inven__60A75C0F" Association="Self.FK__Inventory__Inven__60A75C0F">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="InventoryExpenses" EntitySet="InventoryExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lorry__Inventory__5FB337D6" Association="Self.FK__Lorry__Inventory__5FB337D6">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Lorry" EntitySet="Lorries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Invento__619B8048" Association="Self.FK__Product__Invento__619B8048">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InvertoryModelStoreContainer" CdmEntityContainer="InvertoryEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="InvertoryModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+                <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeContractKinds">
+            <EntityTypeMapping TypeName="InvertoryModel.EmployeeContractKind">
+              <MappingFragment StoreEntitySet="EmployeeContractKind">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ContractKind" ColumnName="ContractKind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeFaults">
+            <EntityTypeMapping TypeName="InvertoryModel.EmployeeFault">
+              <MappingFragment StoreEntitySet="EmployeeFault">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="SalaryReductionTimes" ColumnName="SalaryReductionTimes" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="InvertoryModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="RepairCondition" ColumnName="RepairCondition" />
+                <ScalarProperty Name="Representation" ColumnName="Representation" />
+                <ScalarProperty Name="Foundation" ColumnName="Foundation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryExpenses">
+            <EntityTypeMapping TypeName="InvertoryModel.InventoryExpens">
+              <MappingFragment StoreEntitySet="InventoryExpenses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InventoryIncome" ColumnName="InventoryIncome" />
+                <ScalarProperty Name="InventoryTax" ColumnName="InventoryTax" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="InventoryOutcome" ColumnName="InventoryOutcome" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lorries">
+            <EntityTypeMapping TypeName="InvertoryModel.Lorry">
+              <MappingFragment StoreEntitySet="Lorry">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Plate" ColumnName="Plate" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnProducts">
+            <EntityTypeMapping TypeName="InvertoryModel.OwnProduct">
+              <MappingFragment StoreEntitySet="OwnProduct">
+                <ScalarProperty Name="OwnProductId" ColumnName="OwnProductId" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnProductsLists">
+            <EntityTypeMapping TypeName="InvertoryModel.OwnProductsList">
+              <MappingFragment StoreEntitySet="OwnProductsList">
+                <ScalarProperty Name="OwnProductsListId" ColumnName="OwnProductsListId" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="InvertoryModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OpeningDate" ColumnName="OpeningDate" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IO_OwnProducts">
+            <EntityTypeMapping TypeName="InvertoryModel.IO_OwnProducts">
+              <MappingFragment StoreEntitySet="IO_OwnProducts">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+                <ScalarProperty Name="OutComeDate" ColumnName="OutComeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IO_Products">
+            <EntityTypeMapping TypeName="InvertoryModel.IO_Products">
+              <MappingFragment StoreEntitySet="IO_Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+                <ScalarProperty Name="OutComeDate" ColumnName="OutComeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
