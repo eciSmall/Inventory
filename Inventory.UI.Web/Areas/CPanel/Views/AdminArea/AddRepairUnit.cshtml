@@ -3,30 +3,6 @@
     Layout = null;
 }
 
-@*@foreach (var i in Model.InventoriesList)
-{
-    <Div>
-        @i.Name :<br />
-        @Html.LabelFor(m => m.InventoryModel.PhoneNumber): @i.PhoneNumber<br />
-        @Html.LabelFor(m => m.InventoryModel.RepairCondition): @if(@i.RepairCondition){ <Div>نیازمند تعمیر</Div>}else{<Div>نیاز به تعمیر ندارد</Div>} <br />
-    @Html.LabelFor(m => m.InventoryModel.Foundation): @i.Foundation<br />
-    @Html.LabelFor(m => m.InventoryModel.State): @i.State<br />
-    @Html.LabelFor(m => m.InventoryModel.City): @i.City<br />
-    @Html.LabelFor(m => m.InventoryModel.Address): @i.Address<br />
-    @if (i.Representation)
-    {       
-         <Div>
-             @Html.LabelFor(m => m.InventoryModel.Representation):
-                @Html.ActionLink("ماشین های نمایندگی", "LorryList")<br />
-         </Div>
-    }
-    @Html.ActionLink("مشاهده تاریخچه بررسی های انجام شده جهت تعمیر", "RepairCheckList", new { name = i.Name })<br />
-    @Html.ActionLink("مخارج انبار", "InvertoryExpensesList", new { name = i.Name })<br />
-        
-    ------------
-</Div>
- }*@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +12,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>مشاهده ی اطلاعات جاپارک های اضافه شده</title>
+    <title>اضافه کردن واحد تعمیر کار</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -122,85 +98,47 @@
                                 </li>
                             </ul>
 
-
                         </div>
-                    </div>
                 </nav>
 
                 <div class="clearfix"></div>
             </section>
-            <section class="col-md-9 col-md-pull-3 col-sm-9 col-sm-pull-3 table-section" id="content-section">
-                <div class="col-md-10 col-md-pull-1">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>نام</th>
-                                    <th>آدرس</th>
-                                    <th>استان</th>
-                                    <th>شهر</th>
-                                    <th>زیربنا</th>
-                                    <th>تلفن</th>
-                                    <th>وضعیت تعمیر</th>
-                                    <th>تاریخچه بررسی ها</th>
-                                    <th>مخارج</th>
-                                    <th>نمایندگی می‌باشد یا خیر؟</th>
-                                    <th>سوله‌های انبار</th>
-                                </tr>
-                            </thead>
+            <section class="col-md-8 col-sm-8 col-md-pull-4 col-sm-pull-4" id="content-section">
+                <h1>اضافه کردن واحد تعمیر کار</h1>
+                <br>
+                @using (Html.BeginForm("AddRepairUnit", "AdminArea"))
+                {
+                    <section class="col-md-4 ">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="Name"> @Html.DisplayNameFor(m => m.RepairUnit.Name) </span>
+                            <input type="text" name=Name class="form-control" aria-describedby="Name" required>
+                        </div>
+                    </section>
 
-                            <tbody>
-                                @foreach (var inventory in Model.InventoriesList)
-                                {
-                                <tr>
-                                    <td>                                      
-                                        @Html.ActionLink(inventory.Name, "Invertory", new { inventory }, new { @class="btn btn-parkmark btn-table" })
-                                    </td>
-                                    <td>@inventory.Address</td>
-                                    <td>@inventory.State</td>
-                                    <td>@inventory.City</td>
-                                    <td>@inventory.Foundation</td>
-                                    <td>@inventory.PhoneNumber</td>
-                                    @if (@inventory.RepairCondition == true)
-    {
-                                <td>نیازمند تعمیر می‌باشد</td>
-}
-else
-{
-                                <td>نیازمند تعمیر نمی‌باشد</td>
-}
-                                    <td>
-                                        <a title="مشاهده" href="RepairCheckList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a title="مشاهده" href="InvertoryExpensesList" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                    @if (@inventory.Representation == true)
-    {
-                                <td>نمایندگی می‌باشد</td>
-}
-else
-{
-                                <td>نمایندگی نمی‌باشد</td>
-}
-                                    <td>
-                                        <a title="مشاهده" href="StorageShed" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
-                                    </td>
-                                </tr>
-                                }                            
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="clearfix"></div>               
+                    <section class="col-md-4 ">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="PhoneNumber"> @Html.DisplayNameFor(m => m.RepairUnit.PhoneNumber) </span>
+                            <input type="text" name=PhoneNumber class="form-control" aria-describedby="PhoneNumber" required>
+                        </div>
+                    </section>
+                    <button type="submit" class="btn btn-parkmark">افزودن</button>
+                }
+                @if (Model != null)
+                {
+                    if (Model.RepairUnit != null)
+                    {
+                        if (Model.RepairUnit.EndUserMessage != null)
+                        {
+                            <div class="clearfix"></div>
+                            <div class="text-center text-success">@Model.RepairUnit.EndUserMessage</div>
+                        }
+                    }
+                }
 
             </section>
+            <!--End of main section-->
+
+
         </div>
     </div>
 

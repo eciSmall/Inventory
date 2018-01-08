@@ -1,4 +1,7 @@
 ﻿using Inventory.UI.Web.General.Attributes;
+using Inventory.UI.Web.General.Session;
+using Inventory.UI.Web.Models;
+using Invertory.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +12,30 @@ namespace Inventory.UI.Web.Areas.Dashboard.Controllers
 {
     public class PartnerAreaController : BaseDashboardController
     {
+        PartnerLogic partnerLogic = new PartnerLogic();
         public ActionResult Home()
         {
             return View();
         }
-        public ActionResult PartnerCop()
+        public ActionResult PartnerCopP()
         {
-            return View();
+            SessionState sessionState = new SessionState();
+            int partnerId = (int)sessionState.Get(SessionKeys.PartnerSession);
+            var requestResult = partnerLogic.GetPartner(partnerId);
+            PartnerViewModel = new Models.PartnerViewModel()
+            {
+                PartnerModel = requestResult
+            };
+            return View("PartnerCop", PartnerViewModel);
+        }
+        public ActionResult PartnerCop(int partnerId)
+        {
+            var requestResult = partnerLogic.GetPartner(partnerId);
+            PartnerViewModel = new Models.PartnerViewModel()
+            {
+                PartnerModel = requestResult
+            };
+            return View(PartnerViewModel);
         }
         public ActionResult PartnerCopList()
         {
@@ -54,13 +74,22 @@ namespace Inventory.UI.Web.Areas.Dashboard.Controllers
         [HttpPost]
         public ActionResult PartnerRequest(Model.PartnerRequest partnerRequest)
         {
+            SessionState sessionState = new SessionState();
+            partnerRequest.PartnerRefId = (int)sessionState.Get(SessionKeys.PartnerSession);
+            var requestResult = partnerLogic.AddPartnerRequest(partnerRequest);
             PartnerViewModel = new Models.PartnerViewModel();
             PartnerViewModel.PartnerRequest = new Model.PartnerRequest()
             {
-                RequestDescription = "تعدادی محصول جدید ...",
-                RequestKind = "درخواست فضای در ساعات غیر عادی"
+                EndUserMessage = requestResult.EndUserMessage
             };
-            PartnerViewModel.PartnerRequest.EndUserMessage = "با موفقیت اضافه شد";
+            return View(PartnerViewModel);
+        }
+        public ActionResult PartnerRequestList()
+        {
+            SessionState sessionState = new SessionState();
+            int partnerId = (int)sessionState.Get(SessionKeys.PartnerSession);
+            PartnerViewModel = new PartnerViewModel();
+            PartnerViewModel.PartnerRequestList = partnerLogic.PartnerRquestListByPartner(partnerId);
             return View(PartnerViewModel);
         }
     }

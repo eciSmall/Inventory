@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>اضافه کردن خطا کارمند</title>
+    <title>اضافه کردن انبار</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -111,7 +111,7 @@
                 <h1>اضافه کردن انبار</h1>
                 <br>
                 <!--replace null with appropriate URL-->
-                @using (Html.BeginForm("AddEmployeeFault", "AdminArea"))
+                @using (Html.BeginForm("AddInventory", "AdminArea"))
     {
             <section class="col-md-4 ">
                 <div class="input-group">
@@ -122,8 +122,8 @@
 
             <section class="col-md-4 ">
                 <div class="input-group">
-                    <span class="input-group-addon" id="PhoneNumber"> @Html.DisplayNameFor(m => m.InventoryModel.State) </span>
-                    <input type="text" name=PhoneNumber class="form-control" aria-describedby="PhoneNumber" required>
+                    <span class="input-group-addon" id="State"> @Html.DisplayNameFor(m => m.InventoryModel.State) </span>
+                    <input type="text" name=State class="form-control" aria-describedby="State" required>
                 </div>
             </section>
 
@@ -158,7 +158,7 @@
             <section class="col-md-4 ">
                 <div class="input-group">
                     <span class="input-group-addon" id="Representation"> @Html.DisplayNameFor(m => m.InventoryModel.Representation) </span>
-                    <input type="checkbox" name="Representation" class="form-control" aria-describedby="Representation" required>نمایندگی بودن<br>
+                    <input type="checkbox" name="Representation" value="true" class="form-control" aria-describedby="Representation"><br>
                 </div>
             </section>
             <button type="submit" class="btn btn-parkmark">افزودن</button>

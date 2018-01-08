@@ -17,61 +17,71 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         EmployeeLogic employeeLogic = new EmployeeLogic();
         InventoryLogic inventoryLogic = new InventoryLogic();
         ProductLogic productLogic = new ProductLogic();
+        PartnerLogic partnerLogic = new PartnerLogic();
         public ActionResult Home()
         {
             return View();
         }
-        public ActionResult Invertory()
+
+
+        #region repairUnit
+        public ActionResult AddRepairUnit()
         {
-            InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.InventoryModel = new Model.InventoryModel()
-            {
-                Address = "tehran",
-                City = "tehran",
-                Foundation = 132,
-                Name = "gol",
-                RepairCondition = true,
-                PhoneNumber = "0212222",
-                State = "tehran",
-                Representation = false
-            };
-            return View(InvertoryViewModel);
+            return View();
         }
-        public ActionResult InvertoriesList(List<Model.InventoryModel> invertoriesLsit)
+        [HttpPost]
+        public ActionResult AddRepairUnit(RepairUnit repairUnit)
         {
-            InvertoryViewModel = new InvertoryViewModel();           
-            InvertoryViewModel.InventoriesList = inventoryLogic.InventoryList();
-            return View(InvertoryViewModel);
-        }
-        public ActionResult RepairCheckList(string name)
-        {
-            Random random = new Random();
-            int randomPrice = random.Next(10000, 152825288);
-            Model.RepairCheck repairCheck = new Model.RepairCheck()
-            {
-                SugesstionPrice = randomPrice,
-                VisitDate = DateTime.Now,
-            };
-            InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.RepairCheckList.Add(repairCheck);
-            InvertoryViewModel.InventoryModel = new Model.InventoryModel()
-            {
-                Name = name,
-            };
-            return View(InvertoryViewModel);
-        }
-        public ActionResult RepairUnitList()
-        {
+            var requestResult = inventoryLogic.AddRepairUnit(repairUnit);
             InvertoryViewModel = new InvertoryViewModel();
             InvertoryViewModel.RepairUnit = new RepairUnit()
             {
-                Name = "تعمیر سقف عسگری",
-                PhoneNumber = "568484"
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
             };
-            InvertoryViewModel.RepairUnitList = new List<RepairUnit>();
-            InvertoryViewModel.RepairUnitList.Add(InvertoryViewModel.RepairUnit);
             return View(InvertoryViewModel);
         }
+        public ActionResult DeleteRepairUnit(RepairUnit repairUnit)
+        {
+            var requestResult = inventoryLogic.DeleteRepairUnit(repairUnit);
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.RepairUnit = new RepairUnit()
+            {
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
+            };
+            return RedirectToAction("RepairUnitList");
+        }
+        public ActionResult AddRepairCheck()
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.InventoriesList = inventoryLogic.InventoryList();
+            return View(InvertoryViewModel);
+        }
+        [HttpPost]
+        public ActionResult AddRepairCheck(RepairCheck repairCheck )
+        {
+            var requestResult = inventoryLogic.AddRepairCheck(repairCheck);
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.RepairUnit = new RepairUnit()
+            {
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
+            };
+            return View(InvertoryViewModel);
+        }
+        public ActionResult RepairCheckList(InventoryModel inventoryModel)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.RepairCheckList = inventoryLogic.RepairCheckList(inventoryModel);
+            return View(InvertoryViewModel);
+        }
+        //public ActionResult RepairUnitList()
+        //{
+        //    InvertoryViewModel = new InvertoryViewModel();
+        //    InvertoryViewModel.RepairUnitList = inventoryLogic.RepairUnitList();
+        //    return View(InvertoryViewModel);
+        //}
         public ActionResult RepairUnit()
         {
             InvertoryViewModel = new InvertoryViewModel();
@@ -80,6 +90,21 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
                 Name = "تعمیر سقف عسگری",
                 PhoneNumber = "568484"
             };
+            return View(InvertoryViewModel);
+        }
+
+        #endregion
+        #region inventory
+        public ActionResult Invertory(InventoryModel inventoryModel)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.InventoryModel = inventoryModel;
+            return View(InvertoryViewModel);
+        }
+        public ActionResult InvertoriesList(List<Model.InventoryModel> invertoriesLsit)
+        {
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.InventoriesList = inventoryLogic.InventoryList();
             return View(InvertoryViewModel);
         }
         public ActionResult InvertoryExpensesList(string name)
@@ -109,7 +134,7 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         {
             var requestResult = inventoryLogic.Add(inventoryModel);
             InvertoryViewModel = new InvertoryViewModel();
-            InvertoryViewModel.ProductModel = new ProductModel()
+            InvertoryViewModel.InventoryModel = new InventoryModel()
             {
                 EndUserMessage = requestResult.EndUserMessage,
                 Status = requestResult.Status
@@ -119,13 +144,27 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
 
         public ActionResult InventoryUpdatePage(InventoryModel inventoryModel)
         {
-            return View(inventoryModel);
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.InventoryModel = inventoryModel;
+            return View(InvertoryViewModel);
         }
 
         [HttpPost]
-        public ActionResult InventoryUpdate(InventoryModel inventoryModel)
+        public ActionResult InventoryUpdate(InventoryModel inventoryModel, InventoryModel oldInfo)
         {
+
             return View(inventoryModel);
+        }
+        public ActionResult InventoryDelete(InventoryModel inventoryModel)
+        {
+            var requestResult = inventoryLogic.Delete(inventoryModel);
+            InvertoryViewModel = new InvertoryViewModel();
+            InvertoryViewModel.ProductModel = new ProductModel()
+            {
+                EndUserMessage = requestResult.EndUserMessage,
+                Status = requestResult.Status
+            };
+            return RedirectToAction("InvertoriesList");
         }
         public ActionResult AddInvertoryExpenses(string name)
         {
@@ -148,7 +187,8 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
             InvertoryViewModel.InvertoryExpenses.EndUserMessage = requestResult.EndUserMessage;
             return View(InvertoryViewModel);
         }
-
+        #endregion
+        #region partner
         public ActionResult PartnersList()
         {
             PartnerViewModel = new PartnerViewModel();
@@ -170,14 +210,22 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         [HttpPost]
         public ActionResult AddPartner(Partner partner)
         {
+            var requestResult = partnerLogic.Add(partner);
             PartnerViewModel = new PartnerViewModel();
             PartnerViewModel.PartnerModel = new Partner()
             {
-                EndUserMessage = "با موفقیت اضافه شد" 
+                EndUserMessage = requestResult.EndUserMessage
             };
             return View(PartnerViewModel);
         }
 
+        public ActionResult PartnerRequestList()
+        {
+            PartnerViewModel = new PartnerViewModel();
+            PartnerViewModel.PartnerRequestList = partnerLogic.PartnerRquestList();
+            return View(PartnerViewModel);
+        }
+        #endregion
         public ActionResult AddLorry()
         {
             return View();

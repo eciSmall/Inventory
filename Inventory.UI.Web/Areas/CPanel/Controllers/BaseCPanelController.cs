@@ -17,5 +17,6 @@ namespace Inventory.UI.Web.Areas.CPanel.Controllers
         protected Model.InventoryModel InventoryModel;
         protected InvertoryViewModel InvertoryViewModel;
         protected PartnerViewModel PartnerViewModel;
+
     }
 }

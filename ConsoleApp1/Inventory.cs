@@ -20,6 +20,7 @@ namespace ConsoleApp1
             this.InventoryExpenses = new HashSet<InventoryExpens>();
             this.Lorries = new HashSet<Lorry>();
             this.Products = new HashSet<Product>();
+            this.RepairChecks = new HashSet<RepairCheck>();
         }
     
         public int ID { get; set; }
@@ -38,5 +39,7 @@ namespace ConsoleApp1
         public virtual ICollection<Lorry> Lorries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RepairCheck> RepairChecks { get; set; }
     }
 }

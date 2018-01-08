@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>داشبورد</title>
+    <title>افزودن درخواست فضا</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -74,19 +74,19 @@
             <!--End of menu column-->
             <!--Main section-->
             <section class="col-md-8 col-sm-8 col-md-pull-4 col-sm-pull-4" id="content-section">
-                <h1>افزودن گزارش</h1>
+                <h1>افزودن درخواست فضا</h1>
                 <br>
                 <!--replace null with appropriate URL-->
                 @using (Html.BeginForm("PartnerRequest", "PartnerArea"))
                 {
                     <section class="col-md-4 ">
                         <div class="input-group">
-                            <span class="input-group-addon" id="RequestKind">تیتر درخواست</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.PartnerRequest.RequestKind) class="form-control" aria-describedby="income" required>
+                            <span class="input-group-addon" id="RequestKind">@Html.DisplayNameFor(m => m.PartnerRequest.RequestKind)</span>
+                            <input type="text" name=RequestKind class="form-control" aria-describedby="RequestKind" required>
                         </div>
                         <div class="input-group">
-                            <span class="input-group-addon" id="RequestDescription">متن درخواست</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.PartnerRequest.RequestDescription) class="form-control" aria-describedby="income" required>
+                            <span class="input-group-addon" id="RequestDescription">@Html.DisplayNameFor(m => m.PartnerRequest.RequestDescription)</span>
+                            <input type="text" name=RequestDescription class="form-control" aria-describedby="RequestDescription" required>
                         </div>
                     </section>
 

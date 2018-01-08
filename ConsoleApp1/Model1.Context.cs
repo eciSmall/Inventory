@@ -36,5 +36,9 @@ namespace ConsoleApp1
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<IO_OwnProducts> IO_OwnProducts { get; set; }
         public virtual DbSet<IO_Products> IO_Products { get; set; }
+        public virtual DbSet<Partner> Partners { get; set; }
+        public virtual DbSet<PartnerRequest> PartnerRequests { get; set; }
+        public virtual DbSet<RepairCheck> RepairChecks { get; set; }
+        public virtual DbSet<RepairUnit> RepairUnits { get; set; }
     }
 }

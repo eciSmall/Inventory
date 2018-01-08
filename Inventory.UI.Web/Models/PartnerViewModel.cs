@@ -13,6 +13,6 @@ namespace Inventory.UI.Web.Models
         public ContractMeeting ContractMeeting { get; set; }
         public PartnerContract PartnerContract { get; set; }
         public PartnerRequest PartnerRequest { get; set; }
-
+        public List<PartnerRequest> PartnerRequestList { get; set; }
     }
 }

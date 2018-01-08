@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/Styles/font-awesome.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="~/Styles/styles.css" type="text/css" media="all">
-    <title>داشبورد</title>
+    <title>اضافه کردن شرکت همکار</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -111,35 +111,47 @@
             <!--End of menu column-->
             <!--Main section-->
             <section class="col-md-8 col-sm-8 col-md-pull-4 col-sm-pull-4" id="content-section">
-                <h1>افزودن گزارش</h1>
+                <h1>اضافه کردن شرکت همکار</h1>
                 <br>
                 <!--replace null with appropriate URL-->
-@using (Html.BeginForm("AddPartner", "AdminArea"))
-{
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Name">نام همکار</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.PartnerModel.Name) class="form-control" aria-describedby="Name" required>
-                        </div>
-                    </section>
+                @using (Html.BeginForm("AddPartner", "AdminArea"))
+    {
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Name">@Html.DisplayNameFor(m => m.PartnerModel.Name)</span>
+                    <input type="text" name=Name class="form-control" aria-describedby="Name" required>
+                </div>
+            </section>
 
-                    <section class="col-md-4 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="PhoneNumber">تلفن</span>
-                            <input type="number" name=@Html.DisplayNameFor(m => m.PartnerModel.PhoneNumber) class="form-control" aria-describedby="PhoneNumber" required>
-                        </div>
-                    </section>
+            <section class="col-md-4 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="PhoneNumber">@Html.DisplayNameFor(m => m.PartnerModel.PhoneNumber)</span>
+                    <input type="number" name=PhoneNumber class="form-control" aria-describedby="PhoneNumber" required>
+                </div>
+            </section>
 
-                    <section class="col-md-12 ">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="Address">آدرس</span>
-                            <input type="text" name=@Html.DisplayNameFor(m => m.PartnerModel.Address) class="form-control" aria-describedby="Address" required>
-                        </div>
-                    </section>
+            <section class="col-md-12 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Address">@Html.DisplayNameFor(m => m.PartnerModel.Address)</span>
+                    <input type="text" name=Address class="form-control" aria-describedby="Address" required>
+                </div>
+            </section>
 
-                    <section class="col-md-4 col-md-pull-4">
-                        <button type="submit" class="btn btn-parkmark">افزودن</button>
-                    </section>
+            <section class="col-md-12 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Email">@Html.DisplayNameFor(m => m.PartnerModel.Email)</span>
+                    <input type="text" name=Email class="form-control" aria-describedby="AdEmaildress" required>
+                </div>
+            </section>
+            <section class="col-md-12 ">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Password">@Html.DisplayNameFor(m => m.PartnerModel.Password)</span>
+                    <input type="password" name=Password minlength="8" maxlength="20" class="form-control" aria-describedby="Password" required>
+                </div>
+            </section>
+            <section class="col-md-4 col-md-pull-4">
+                <button type="submit" class="btn btn-parkmark">افزودن</button>
+            </section>
 
 }
             </section>

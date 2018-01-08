@@ -20,6 +20,12 @@
         <AssociationConnector Association="InvertoryModel.FK__Inventory__Inven__60A75C0F" ManuallyRouted="false" />
         <AssociationConnector Association="InvertoryModel.FK__Lorry__Inventory__5FB337D6" ManuallyRouted="false" />
         <AssociationConnector Association="InvertoryModel.FK__Product__Invento__619B8048" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InvertoryModel.Partner" Width="1.5" PointX="10.375" PointY="1" />
+        <EntityTypeShape EntityType="InvertoryModel.PartnerRequest" Width="1.5" PointX="12.625" PointY="1.125" />
+        <EntityTypeShape EntityType="InvertoryModel.RepairCheck" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="InvertoryModel.RepairUnit" Width="1.5" PointX="5.375" PointY="10.75" />
+        <AssociationConnector Association="InvertoryModel.FK__RepairChe__Inven__71D1E811" />
+        <AssociationConnector Association="InvertoryModel.FK__PartnerRe__Partn__14270015" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

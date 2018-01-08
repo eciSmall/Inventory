@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InvertoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InvertoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Id" />
@@ -108,6 +108,26 @@ warning 6002: The table/view 'Invertory.dbo.IO_Products' does not have a primary
           <Property Name="Source" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Destination" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+          </Key>
+          <Property Name="PartnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PartnerRequest">
+          <Key>
+            <PropertyRef Name="PartnerRequestId" />
+          </Key>
+          <Property Name="PartnerRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestKind" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="PartnerRefId" Type="int" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
@@ -128,6 +148,23 @@ warning 6013: The table/view 'Invertory.dbo.ProductContain' does not have a prim
           <Property Name="OwnProductListId" Type="int" />
           <Property Name="OwnProductId" Type="int" />
         </EntityType>-->
+        <EntityType Name="RepairCheck">
+          <Key>
+            <PropertyRef Name="RepairCheckId" />
+          </Key>
+          <Property Name="RepairCheckId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisitDate" Type="datetime2" Precision="7" />
+          <Property Name="SugesstionPrice" Type="int" />
+          <Property Name="InventoryRefId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RepairUnit">
+          <Key>
+            <PropertyRef Name="RepairUnitId" />
+          </Key>
+          <Property Name="RepairUnitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK__EmployeeF__Emplo__4D94879B">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="EmployeeFault" Type="Self.EmployeeFault" Multiplicity="*" />
@@ -164,6 +201,18 @@ warning 6013: The table/view 'Invertory.dbo.ProductContain' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PartnerRe__Partn__14270015">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="PartnerRequest" Type="Self.PartnerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="PartnerRequest">
+              <PropertyRef Name="PartnerRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Product__Invento__619B8048">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -182,6 +231,18 @@ error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relation
         <!--Errors Found During Generation:
 error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relationship, but cannot be found.
         <Association Name="FK__ProductCo__OwnPr__33D4B598" />-->
+        <Association Name="FK__RepairChe__Inven__71D1E811">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="RepairCheck" Type="Self.RepairCheck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RepairCheck">
+              <PropertyRef Name="InventoryRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="InvertoryModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeContractKind" EntityType="Self.EmployeeContractKind" Schema="dbo" store:Type="Tables" />
@@ -191,7 +252,11 @@ error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relation
           <EntitySet Name="Lorry" EntityType="Self.Lorry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OwnProduct" EntityType="Self.OwnProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OwnProductsList" EntityType="Self.OwnProductsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerRequest" EntityType="Self.PartnerRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RepairCheck" EntityType="Self.RepairCheck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RepairUnit" EntityType="Self.RepairUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IO_OwnProducts" EntityType="Self.IO_OwnProducts" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [IO_OwnProducts].[ProductId] AS [ProductId], 
@@ -220,13 +285,20 @@ error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relation
             <End Role="Inventory" EntitySet="Inventory" />
             <End Role="Lorry" EntitySet="Lorry" />
           </AssociationSet>
+          <AssociationSet Name="FK__PartnerRe__Partn__14270015" Association="Self.FK__PartnerRe__Partn__14270015">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="PartnerRequest" EntitySet="PartnerRequest" />
+          </AssociationSet>
           <AssociationSet Name="FK__Product__Invento__619B8048" Association="Self.FK__Product__Invento__619B8048">
             <End Role="Inventory" EntitySet="Inventory" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
+          <AssociationSet Name="FK__RepairChe__Inven__71D1E811" Association="Self.FK__RepairChe__Inven__71D1E811">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="RepairCheck" EntitySet="RepairCheck" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InvertoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -277,6 +349,7 @@ error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relation
           <NavigationProperty Name="InventoryExpenses" Relationship="Self.FK__Inventory__Inven__60A75C0F" FromRole="Inventory" ToRole="InventoryExpenses" />
           <NavigationProperty Name="Lorries" Relationship="Self.FK__Lorry__Inventory__5FB337D6" FromRole="Inventory" ToRole="Lorry" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Product__Invento__619B8048" FromRole="Inventory" ToRole="Product" />
+          <NavigationProperty Name="RepairChecks" Relationship="InvertoryModel.FK__RepairChe__Inven__71D1E811" FromRole="Inventory" ToRole="RepairCheck" />
         </EntityType>
         <EntityType Name="InventoryExpens">
           <Key>
@@ -427,7 +500,83 @@ error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relation
             <End Role="Inventory" EntitySet="Inventories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="Partners" EntityType="InvertoryModel.Partner" />
+          <EntitySet Name="PartnerRequests" EntityType="InvertoryModel.PartnerRequest" />
+          <EntitySet Name="RepairChecks" EntityType="InvertoryModel.RepairCheck" />
+          <EntitySet Name="RepairUnits" EntityType="InvertoryModel.RepairUnit" />
+          <AssociationSet Name="FK__RepairChe__Inven__71D1E811" Association="InvertoryModel.FK__RepairChe__Inven__71D1E811">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="RepairCheck" EntitySet="RepairChecks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PartnerRe__Partn__14270015" Association="InvertoryModel.FK__PartnerRe__Partn__14270015">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="PartnerRequest" EntitySet="PartnerRequests" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+          </Key>
+          <Property Name="PartnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PartnerRequests" Relationship="InvertoryModel.FK__PartnerRe__Partn__14270015" FromRole="Partner" ToRole="PartnerRequest" />
+        </EntityType>
+        <EntityType Name="PartnerRequest">
+          <Key>
+            <PropertyRef Name="PartnerRequestId" />
+          </Key>
+          <Property Name="PartnerRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestKind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartnerRefId" Type="Int32" />
+          <NavigationProperty Name="Partner" Relationship="InvertoryModel.FK__PartnerRe__Partn__14270015" FromRole="PartnerRequest" ToRole="Partner" />
+        </EntityType>
+        <EntityType Name="RepairCheck">
+          <Key>
+            <PropertyRef Name="RepairCheckId" />
+          </Key>
+          <Property Name="RepairCheckId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisitDate" Type="DateTime" Precision="7" />
+          <Property Name="SugesstionPrice" Type="Int32" />
+          <Property Name="InventoryRefId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inventory" Relationship="InvertoryModel.FK__RepairChe__Inven__71D1E811" FromRole="RepairCheck" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="RepairUnit">
+          <Key>
+            <PropertyRef Name="RepairUnitId" />
+          </Key>
+          <Property Name="RepairUnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__RepairChe__Inven__71D1E811">
+          <End Type="InvertoryModel.Inventory" Role="Inventory" Multiplicity="1" />
+          <End Type="InvertoryModel.RepairCheck" Role="RepairCheck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RepairCheck">
+              <PropertyRef Name="InventoryRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PartnerRe__Partn__14270015">
+          <End Type="InvertoryModel.Partner" Role="Partner" Multiplicity="0..1" />
+          <End Type="InvertoryModel.PartnerRequest" Role="PartnerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="PartnerRequest">
+              <PropertyRef Name="PartnerRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -553,6 +702,47 @@ error 6004: The table 'Invertory.dbo.ProductContain' is referenced by a relation
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
                 <ScalarProperty Name="OutComeDate" ColumnName="OutComeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="InvertoryModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerRequests">
+            <EntityTypeMapping TypeName="InvertoryModel.PartnerRequest">
+              <MappingFragment StoreEntitySet="PartnerRequest">
+                <ScalarProperty Name="PartnerRefId" ColumnName="PartnerRefId" />
+                <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+                <ScalarProperty Name="RequestKind" ColumnName="RequestKind" />
+                <ScalarProperty Name="PartnerRequestId" ColumnName="PartnerRequestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepairChecks">
+            <EntityTypeMapping TypeName="InvertoryModel.RepairCheck">
+              <MappingFragment StoreEntitySet="RepairCheck">
+                <ScalarProperty Name="InventoryRefId" ColumnName="InventoryRefId" />
+                <ScalarProperty Name="SugesstionPrice" ColumnName="SugesstionPrice" />
+                <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+                <ScalarProperty Name="RepairCheckId" ColumnName="RepairCheckId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepairUnits">
+            <EntityTypeMapping TypeName="InvertoryModel.RepairUnit">
+              <MappingFragment StoreEntitySet="RepairUnit">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RepairUnitId" ColumnName="RepairUnitId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

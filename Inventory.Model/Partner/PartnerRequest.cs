@@ -16,5 +16,6 @@ namespace Inventory.Model
 
         [Display(Name = "متن درخواست")]
         public string RequestDescription { get; set; }
+        public int PartnerRefId { get; set; }
     }
 }

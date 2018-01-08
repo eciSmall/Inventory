@@ -25,31 +25,33 @@
                         <div class="clearfix"></div>
                         <article>
                             @using (Html.BeginForm("CheckAuthenticate", "DAuthentication"))
-                            {
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="email">ایمیل</span>
-                                    <input type="text" name="email" class="form-control" placeholder="ایمیل" aria-describedby="x-addon">
-                                </div>
-                                <span class="text-danger" id="email-error"></span>
+                    {
+                        <div class="input-group">
+                            <span class="input-group-addon" id="email">ایمیل</span>
+                            <input type="text" name="email" class="form-control" placeholder="ایمیل" aria-describedby="x-addon">
+                        </div>
+                        <span class="text-danger" id="email-error"></span>
 
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="password">رمز عبور</span>
-                                    <input type="password" minlength="8" maxlength="20" name="password" class="form-control" placeholder="رمز عبور" aria-describedby="x-addon">
-                                </div>
-                                <span class="text-danger" id="password-error"></span>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="password">رمز عبور</span>
+                            <input type="password" minlength="8" maxlength="20" name="password" class="form-control" placeholder="رمز عبور" aria-describedby="x-addon">
+                        </div>
+                        <span class="text-danger" id="password-error"></span>
 
-                                <button type="submit" class="btn btn-parkmark" id="login-submit">ورود</button>
-                            }
+                        <button type="submit" class="btn btn-parkmark" id="login-submit">ورود</button>
+            }
                         </article>
-                        <footer>
-                        </footer>
+                        <footer></footer>
                     </section>
                 </div>
             </div>
-            @if (@Model != null)
+        @if (Model != null)
+        {
+            if (Model.EndUserMessage != null)
             {
-                <div>@Model.EndUserMessage</div><br />
-            }
+                <div>@Model.EndUserMessage</div>
+    }
+}
         </div>
     </div>
 

@@ -70,5 +70,94 @@ namespace Invertory.Business
                 };
             }
         }
+        public BaseResponse Delete(InventoryModel inventoryModel)
+        {
+            try
+            {
+                return new BaseResponse()
+                {
+                    Status = inventoryRepository.Delete(inventoryModel),
+                    EndUserMessage = "با موفقیت حذف شد"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse()
+                {
+                    Status = ResponseStatus.InternalError,
+                    EndUserMessage = "یک مشکل پیش آماده است"
+                };
+            }
+        }
+        public BaseResponse AddRepairUnit(RepairUnit repairUnit)
+        {
+            try
+            {
+                return new BaseResponse()
+                {
+                    Status = inventoryRepository.AddRepairUnit(repairUnit),
+                    EndUserMessage = "با موفقیت اضافه شد"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse()
+                {
+                    Status = ResponseStatus.InternalError,
+                    EndUserMessage = "یک مشکل پیش آماده است"
+                };
+            }
+        }
+        public BaseResponse DeleteRepairUnit(RepairUnit repairUnit)
+        {
+            try
+            {
+                return new BaseResponse()
+                {
+                    Status = inventoryRepository.DeleteRepairUnit(repairUnit),
+                    EndUserMessage = "با موفقیت حذف شد"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse()
+                {
+                    Status = ResponseStatus.InternalError,
+                    EndUserMessage = "یک مشکل پیش آماده است"
+                };
+            }
+        }
+        public List<RepairCheck> RepairCheckList(InventoryModel inventoryModel)
+        {
+            try
+            {
+                return inventoryRepository.RepairCheckList(inventoryModel);
+            }
+            catch (Exception ex)
+            {
+                return new List<RepairCheck>()
+                {
+                };
+            }
+        }
+        public BaseResponse AddRepairCheck(RepairCheck repairCheck)
+        {
+            try
+            {
+                return new BaseResponse()
+                {
+                    Status = inventoryRepository.AddRepairCheck(repairCheck),
+                    EndUserMessage = "با موفقیت اضافه شد"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse()
+                {
+                    Status = ResponseStatus.InternalError,
+                    EndUserMessage = "یک مشکل پیش آماده است"
+                };
+            }
+        }
     }
 }

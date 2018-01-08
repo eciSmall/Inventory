@@ -8,5 +8,6 @@ namespace Inventory.UI.Web.General.Session
     public static class SessionKeys
     {
         public const string AdminSession = "AdminSession";
+        public const string PartnerSession = "PartnerSession";
     }
 }

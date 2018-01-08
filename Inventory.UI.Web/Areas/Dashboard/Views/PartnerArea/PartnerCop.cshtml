@@ -1,4 +1,4 @@
-﻿
+﻿@model Inventory.UI.Web.Models.PartnerViewModel
 @{
     Layout = null;
 }
@@ -79,18 +79,16 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>صادرات گلچین</td>
-                                    <td>0215485484</td>
-                                    <td>دیباجی جنوبی</td>
+                                    <td>@Model.PartnerModel.Name</td>
+                                    <td>@Model.PartnerModel.PhoneNumber</td>
+                                    <td>@Model.PartnerModel.Address</td>
                                     <td>
                                         <a title="مشاهده" href="PartnerContract" class="btn btn-parkmark btn-table">
                                             مشاهده
                                         </a>
                                     </td>
                                     <td>
-                                        <a title="مشاهده" href="PartnerRequest" class="btn btn-parkmark btn-table">
-                                            مشاهده
-                                        </a>
+                                        @Html.ActionLink("مشاهده", "PartnerRequestList", "PartnerArea", new { area = "Dashboard" }, new { @class = "btn btn-parkmark btn-table" })
                                     </td>
                                 </tr>
                             </tbody>
